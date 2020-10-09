@@ -1,0 +1,40 @@
+<Defs>
+<ThingDef ParentName="LampBase">
+    <defName>GreaterLamp</defName>
+    <label>greater lamp</label>
+    <description>An industrial lamp which lights an area brightly, but consumes a huge amount of power.</description>
+    <thingClass>Building_SunLamp</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/LampSun</texPath>
+    </graphicData>
+    <blockWind>true</blockWind>
+    <tickerType>Rare</tickerType>
+    <statBases>
+      <WorkToBuild>330</WorkToBuild>
+      <Mass>4.5</Mass>
+    </statBases>
+    <costList>
+      <Steel>100</Steel>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>15</glowRadius>
+        <glowColor>(560,560,560,0)</glowColor>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>500</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>10</heatPerSecond>
+      </li>
+	  <li Class="CompProperties_Schedule">
+        <!-- Match plant growing times -->
+        <startTime>0.8</startTime>
+        <endTime>0.25</endTime>
+        <offMessage>Off for the day.</offMessage>
+      </li>
+    </comps>
+  </ThingDef>
+ </Defs>
