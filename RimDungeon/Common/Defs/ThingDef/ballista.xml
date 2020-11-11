@@ -32,7 +32,7 @@
       <WorkToBuild>1800</WorkToBuild>
       <Mass>8</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+      <ShootingAccuracyTurret>1</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
@@ -41,23 +41,6 @@
         <manWorkType>Violent</manWorkType>
       </li>
       <li Class="CompProperties_Breakdownable"/>
-      <li Class="CompProperties_Refuelable">
-		<fuelLabel>Shots until arm replacement</fuelLabel>
-		<fuelGizmoLabel>Arm durability</fuelGizmoLabel>
-		<fuelFilter>
-			<thingDefs>
-				<li>WoodLog</li>
-			</thingDefs>
-		</fuelFilter>
-		<fuelCapacity>40</fuelCapacity>
-		<initialFuelPercent>1</initialFuelPercent>
-		<autoRefuelPercent>0.15</autoRefuelPercent>
-		<showFuelGizmo>true</showFuelGizmo>
-		<fuelMultiplier>0.66666</fuelMultiplier>
-		<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-		<outOfFuelMessage>Cannot shoot: Needs new arm</outOfFuelMessage>
-		<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
-      </li>
     </comps>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
@@ -74,7 +57,7 @@
       <combatPower>45</combatPower>   <!-- same as a scavenger -->
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Bow_Ballista</turretGunDef>
-      <turretBurstCooldownTime>28</turretBurstCooldownTime>
+      <turretBurstCooldownTime>1</turretBurstCooldownTime>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -96,8 +79,8 @@
     <projectile>
       <damageDef>Arrow</damageDef>
       <damageAmountBase>50</damageAmountBase>
-      <speed>50</speed>
-	  <stoppingPower>5</stoppingPower>
+      <speed>250</speed>
+	  <stoppingPower>10</stoppingPower>
     </projectile>
   </ThingDef>
 
@@ -113,7 +96,7 @@
       <AccuracyTouch>1.00</AccuracyTouch>
       <AccuracyShort>1.00</AccuracyShort>
       <AccuracyMedium>1.00</AccuracyMedium>
-      <AccuracyLong>2.00</AccuracyLong>
+      <AccuracyLong>1.00</AccuracyLong>
       <RangedWeapon_Cooldown>10</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
@@ -125,10 +108,9 @@
         <defaultProjectile>Arrow_Ballista</defaultProjectile>
         <warmupTime>0</warmupTime>
         <range>45.9</range>
-        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
         <burstShotCount>1</burstShotCount>
         <soundCast>Bow_Large</soundCast>
-        <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
         <consumeFuelPerShot>1</consumeFuelPerShot>
       </li>
