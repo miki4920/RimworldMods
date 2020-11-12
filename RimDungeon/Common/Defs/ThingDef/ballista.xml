@@ -2,13 +2,13 @@
 <ThingDef ParentName="BuildingBase">
     <defName>Ballista_Turret</defName>
     <label>ballista-turret</label>
-    <description>An automatic turret. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
+    <description>A Ballista. Has a great stopping power and accuracy, but takes a long time to reload.</description>
     <thingClass>Building_TurretGun</thingClass>
 	<size>(2,2)</size>
     <graphicData>
-      <texPath>Things/Building/Security/TurretMini_Base</texPath>
+      <texPath>Things/Building/Ballista/Ballista_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(3,3)</drawSize>
+      <drawSize>(2.5,2.5)</drawSize>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
@@ -22,7 +22,9 @@
     <minifiedDef>MinifiedThing</minifiedDef>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
-    <rotatable>false</rotatable>
+    <rotatable>true</rotatable>
+	<hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <thingCategories>
       <li>BuildingsSecurity</li>
     </thingCategories>
@@ -57,40 +59,42 @@
       <combatPower>45</combatPower>   <!-- same as a scavenger -->
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Bow_Ballista</turretGunDef>
-      <turretBurstCooldownTime>1</turretBurstCooldownTime>
+      <turretBurstCooldownTime>2</turretBurstCooldownTime>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
       <li>PlaceWorker_ShowTurretRadius</li>
+	  <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>
     <designationHotKey>Misc2</designationHotKey>
     <researchPrerequisites>
-      <li>GunTurrets</li>
+            <li>Greatbow</li>
     </researchPrerequisites>
   </ThingDef>
 
   <ThingDef ParentName="BaseProjectileNeolithic">
-    <defName>Arrow_Ballista</defName>
-    <label>Ballista Arrow</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <damageDef>Arrow</damageDef>
-      <damageAmountBase>50</damageAmountBase>
-      <speed>250</speed>
-	  <stoppingPower>10</stoppingPower>
-    </projectile>
-  </ThingDef>
+        <defName>Projectile_Ballista</defName>
+        <label>ballista projectile</label>
+        <graphicData>
+            <texPath>Things/Projectile/Pilum</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>ArrowHighVelocity</damageDef>
+            <damageAmountBase>36</damageAmountBase>
+            <armorPenetrationBase>0.25</armorPenetrationBase>
+            <stoppingPower>2.5</stoppingPower>
+            <speed>75</speed>
+        </projectile>
+   </ThingDef>
 
   <ThingDef ParentName="BaseWeaponTurret">
     <defName>Bow_Ballista</defName>
     <label>Ballista-Bow</label>
     <description>A powerful bow made to be mounted on a ballista.</description>
     <graphicData>
-      <texPath>Things/Building/Security/TurretMini_Top</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+        <texPath>Things/Building/Ballista/Ballista_east</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
       <AccuracyTouch>1.00</AccuracyTouch>
@@ -105,13 +109,12 @@
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
-        <defaultProjectile>Arrow_Ballista</defaultProjectile>
+        <defaultProjectile>Projectile_Ballista</defaultProjectile>
         <warmupTime>0</warmupTime>
         <range>45.9</range>
         <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
         <burstShotCount>1</burstShotCount>
         <soundCast>Bow_Large</soundCast>
-        <muzzleFlashScale>9</muzzleFlashScale>
         <consumeFuelPerShot>1</consumeFuelPerShot>
       </li>
     </verbs>
