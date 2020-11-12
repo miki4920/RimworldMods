@@ -1,7 +1,7 @@
 <Defs>
 <ThingDef ParentName="BuildingBase">
     <defName>Ballista_Turret</defName>
-    <label>ballista-turret</label>
+    <label>ballista turret</label>
     <description>A Ballista. Has a great stopping power and accuracy, but takes a long time to reload.</description>
     <thingClass>Building_TurretGun</thingClass>
 	<size>(2,2)</size>
@@ -17,32 +17,28 @@
         <offset>(0,0,0)</offset>
       </shadowData>
     </graphicData>
-    <uiIconPath>Things/Building/Security/TurretMini_MenuIcon</uiIconPath>
+    <uiIconPath>Things/Building/Ballista/Ballista_north</uiIconPath>
     <uiIconScale>0.90</uiIconScale>
-    <minifiedDef>MinifiedThing</minifiedDef>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>true</rotatable>
 	<hasInteractionCell>true</hasInteractionCell>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
-    <thingCategories>
-      <li>BuildingsSecurity</li>
-    </thingCategories>
     <statBases>
-      <MaxHitPoints>100</MaxHitPoints>
+      <MaxHitPoints>180</MaxHitPoints>
       <Flammability>1</Flammability>
       <WorkToBuild>1800</WorkToBuild>
       <Mass>8</Mass>
       <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+      <ShootingAccuracyTurret>0.98</ShootingAccuracyTurret>
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
       <li Class="CompProperties_Forbiddable"/>
+	  <li Class="CompProperties_Breakdownable"/>
 	  <li Class="CompProperties_Mannable">
         <manWorkType>Violent</manWorkType>
       </li>
-      <li Class="CompProperties_Breakdownable"/>
     </comps>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
@@ -59,16 +55,15 @@
       <combatPower>45</combatPower>   <!-- same as a scavenger -->
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Bow_Ballista</turretGunDef>
-      <turretBurstCooldownTime>2</turretBurstCooldownTime>
+      <turretBurstCooldownTime>8</turretBurstCooldownTime>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
       <li>PlaceWorker_ShowTurretRadius</li>
 	  <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>
-    <designationHotKey>Misc2</designationHotKey>
     <researchPrerequisites>
-            <li>Greatbow</li>
+        <li>Greatbow</li>
     </researchPrerequisites>
   </ThingDef>
 
@@ -97,11 +92,10 @@
         <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
-      <AccuracyTouch>1.00</AccuracyTouch>
-      <AccuracyShort>1.00</AccuracyShort>
-      <AccuracyMedium>1.00</AccuracyMedium>
-      <AccuracyLong>1.00</AccuracyLong>
-      <RangedWeapon_Cooldown>10</RangedWeapon_Cooldown>
+      <AccuracyTouch>0.2</AccuracyTouch>
+      <AccuracyShort>0.3</AccuracyShort>
+      <AccuracyMedium>0.5</AccuracyMedium>
+      <AccuracyLong>0.9</AccuracyLong>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
       <Flammability>0</Flammability>
