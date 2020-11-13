@@ -1,14 +1,43 @@
 <Defs>
-<ThingDef ParentName="BuildingBase">
+
+<ThingDef Name="BaseTurret" Abstract="True">
+    <category>Building</category>
+	<designationCategory>Security</designationCategory>
+    <thingClass>Building_TurretGun</thingClass>	
+	<altitudeLayer>Building</altitudeLayer>	
+	<tickerType>Normal</tickerType>	
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <selectable>true</selectable>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+	<hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasTooltip>true</hasTooltip>	
+	<size>(1,2)</size>
+    <statBases>
+      <SellPriceFactor>0.70</SellPriceFactor>
+    </statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
+    </comps>
+	<stealable>false</stealable>
+    <rotatable>true</rotatable>
+  </ThingDef>
+
+<ThingDef ParentName="BaseTurret">
     <defName>Ballista_Turret</defName>
     <label>ballista turret</label>
     <description>A Ballista. Has a great stopping power and accuracy, but takes a long time to reload.</description>
-    <thingClass>Building_TurretGun</thingClass>
-	<size>(2,2)</size>
     <graphicData>
       <texPath>Things/Building/Ballista/BallistaBase</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(2.5,2.5)</drawSize>
+      <drawSize>(2,2)</drawSize>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
@@ -17,13 +46,10 @@
         <offset>(0,0,0)</offset>
       </shadowData>
     </graphicData>
+	
     <uiIconPath>Things/Building/Ballista/BallistaTop</uiIconPath>
     <uiIconScale>0.90</uiIconScale>
-    <altitudeLayer>Building</altitudeLayer>
-    <stealable>false</stealable>
-    <rotatable>true</rotatable>
-	<hasInteractionCell>true</hasInteractionCell>
-    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    
     <statBases>
       <MaxHitPoints>180</MaxHitPoints>
       <Flammability>1</Flammability>
@@ -32,25 +58,18 @@
       <Beauty>-20</Beauty>
       <ShootingAccuracyTurret>0.98</ShootingAccuracyTurret>
     </statBases>
-    <tickerType>Normal</tickerType>
-    <comps>
-      <li Class="CompProperties_Forbiddable"/>
-	  <li Class="CompProperties_Breakdownable"/>
-	  <li Class="CompProperties_Mannable">
-        <manWorkType>Violent</manWorkType>
-      </li>
-    </comps>
+	
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <fillPercent>0.4</fillPercent>
-    <hasTooltip>true</hasTooltip>
+	
 	<costList>
       <WoodLog>130</WoodLog>
       <Steel>40</Steel>
     </costList>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-    <designationCategory>Security</designationCategory>
+
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	
     <building>
       <combatPower>45</combatPower>   <!-- same as a scavenger -->
       <ai_combatDangerous>true</ai_combatDangerous>
@@ -62,11 +81,13 @@
       <li>PlaceWorker_ShowTurretRadius</li>
 	  <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>
+	
     <researchPrerequisites>
         <li>Greatbow</li>
     </researchPrerequisites>
+	
   </ThingDef>
-
+  
   <ThingDef ParentName="BaseProjectileNeolithic">
         <defName>Projectile_Ballista</defName>
         <label>ballista projectile</label>
@@ -89,7 +110,6 @@
     <description>A powerful bow made to be mounted on a ballista.</description>
     <graphicData>
         <texPath>Things/Building/Ballista/BallistaTop</texPath>
-        <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
       <AccuracyTouch>0.2</AccuracyTouch>
@@ -104,7 +124,6 @@
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <defaultProjectile>Projectile_Ballista</defaultProjectile>
-        <warmupTime>0</warmupTime>
         <range>45.9</range>
         <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
         <burstShotCount>1</burstShotCount>
