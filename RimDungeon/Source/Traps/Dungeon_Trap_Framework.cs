@@ -9,26 +9,20 @@ namespace Rimdungeon.Traps
 {
 	public abstract class Dungeon_Trap_Framework : Building
 	{
-		public Dungeon_Trap_Def trap_def => base.def.GetModExtension<Dungeon_Trap_Def>();
-		// Token: 0x17000DCA RID: 3530
-		// (get) Token: 0x06004EF5 RID: 20213 RVA: 0x001AACCA File Offset: 0x001A8ECA
+		public Dungeon_Trap_Def TrapDef => base.def.GetModExtension<Dungeon_Trap_Def>();
 		private bool CanSetAutoRearm
 		{
 			get
 			{
-				return base.Faction == Faction.OfPlayer && this.def.blueprintDef != null && this.def.IsResearchFinished && trap_def.canAutoRearm;
+				return base.Faction == Faction.OfPlayer && this.def.blueprintDef != null && this.def.IsResearchFinished && TrapDef.canAutoRearm;
 			}
 		}
-
-		// Token: 0x06004EF6 RID: 20214 RVA: 0x001AACF3 File Offset: 0x001A8EF3
 		public override void ExposeData()
 		{
 			base.ExposeData();
 			Scribe_Values.Look<bool>(ref this.autoRearm, "autoRearm", false, false);
 			Scribe_Collections.Look<Pawn>(ref this.touchingPawns, "testees", LookMode.Reference, Array.Empty<object>());
 		}
-
-		// Token: 0x06004EF7 RID: 20215 RVA: 0x001AAD23 File Offset: 0x001A8F23
 		public override void SpawnSetup(Map map, bool respawningAfterLoad)
 		{
 			base.SpawnSetup(map, respawningAfterLoad);
@@ -37,8 +31,6 @@ namespace Rimdungeon.Traps
 				this.autoRearm = (this.CanSetAutoRearm && map.areaManager.Home[base.Position]);
 			}
 		}
-
-		// Token: 0x06004EF8 RID: 20216 RVA: 0x001AAD58 File Offset: 0x001A8F58
 		public override void Tick()
 		{
 			if (base.Spawned)
@@ -64,8 +56,6 @@ namespace Rimdungeon.Traps
 			}
 			base.Tick();
 		}
-
-		// Token: 0x06004EF9 RID: 20217 RVA: 0x001AAE1C File Offset: 0x001A901C
 		private void CheckSpring(Pawn p)
 		{
 			if (Rand.Chance(this.SpringChance(p)))
@@ -78,8 +68,6 @@ namespace Rimdungeon.Traps
 				}
 			}
 		}
-
-		// Token: 0x06004EFA RID: 20218 RVA: 0x001AAED0 File Offset: 0x001A90D0
 		protected virtual float SpringChance(Pawn p)
 		{
 			float num = 1f;
@@ -89,17 +77,17 @@ namespace Rimdungeon.Traps
 				{
 					if (p.RaceProps.Animal)
 					{
-						num = 0.2f;
+						num = TrapDef.wildAnimalSpringChance;
 						num *= this.def.building.trapPeacefulWildAnimalsSpringChanceFactor;
 					}
 					else
 					{
-						num = 0.3f;
+						num = TrapDef.noFactionSpringChance;
 					}
 				}
 				else if (p.Faction == base.Faction)
 				{
-					num = 0.005f;
+					num = TrapDef.sameFactionSpringChance;
 				}
 				else
 				{
@@ -109,40 +97,30 @@ namespace Rimdungeon.Traps
 			num *= this.GetStatValue(StatDefOf.TrapSpringChance, true) * p.GetStatValue(StatDefOf.PawnTrapSpringChance, true);
 			return Mathf.Clamp01(num);
 		}
-
-		// Token: 0x06004EFB RID: 20219 RVA: 0x001AAF64 File Offset: 0x001A9164
 		public bool KnowsOfTrap(Pawn p)
 		{
 			return (p.Faction != null && !p.Faction.HostileTo(base.Faction)) || (p.Faction == null && p.RaceProps.Animal && !p.InAggroMentalState) || (p.guest != null && p.guest.Released) || (!p.IsPrisoner && base.Faction != null && p.HostFaction == base.Faction) || (p.RaceProps.Humanlike && p.IsFormingCaravan()) || (p.IsPrisoner && p.guest.ShouldWaitInsteadOfEscaping && base.Faction == p.HostFaction) || (p.Faction == null && p.RaceProps.Humanlike);
 		}
-
-		// Token: 0x06004EFC RID: 20220 RVA: 0x001AB038 File Offset: 0x001A9238
 		public override ushort PathFindCostFor(Pawn p)
 		{
 			if (!this.KnowsOfTrap(p))
 			{
 				return 0;
 			}
-			return 800;
+			return TrapDef.pathFindCost;
 		}
-
-		// Token: 0x06004EFD RID: 20221 RVA: 0x001AB04A File Offset: 0x001A924A
 		public override ushort PathWalkCostFor(Pawn p)
 		{
 			if (!this.KnowsOfTrap(p))
 			{
 				return 0;
 			}
-			return 40;
+			return TrapDef.pathWalkCost;
 		}
-
-		// Token: 0x06004EFE RID: 20222 RVA: 0x001AB059 File Offset: 0x001A9259
 		public override bool IsDangerousFor(Pawn p)
 		{
 			return this.KnowsOfTrap(p);
 		}
-
-		// Token: 0x06004EFF RID: 20223 RVA: 0x001AB064 File Offset: 0x001A9264
 		public void Spring(Pawn p)
 		{
 			bool spawned = base.Spawned;
@@ -160,8 +138,6 @@ namespace Rimdungeon.Traps
 				}
 			}
 		}
-
-		// Token: 0x06004F00 RID: 20224 RVA: 0x001AB0B4 File Offset: 0x001A92B4
 		public override void Kill(DamageInfo? dinfo = null, Hediff exactCulprit = null)
 		{
 			bool spawned = base.Spawned;
@@ -172,11 +148,7 @@ namespace Rimdungeon.Traps
 				this.CheckAutoRebuild(map);
 			}
 		}
-
-		// Token: 0x06004F01 RID: 20225
 		protected abstract void SpringSub(Pawn p);
-
-		// Token: 0x06004F02 RID: 20226 RVA: 0x001AB0E0 File Offset: 0x001A92E0
 		private void CheckAutoRebuild(Map map)
 		{
 			if (this.autoRearm && this.CanSetAutoRearm && map != null && GenConstruct.CanPlaceBlueprintAt(this.def, base.Position, base.Rotation, map, false, null, null, base.Stuff).Accepted)
@@ -184,8 +156,6 @@ namespace Rimdungeon.Traps
 				GenConstruct.PlaceBlueprintForBuild(this.def, base.Position, map, base.Rotation, Faction.OfPlayer, base.Stuff);
 			}
 		}
-
-		// Token: 0x06004F03 RID: 20227 RVA: 0x001AB14F File Offset: 0x001A934F
 		public override IEnumerable<Gizmo> GetGizmos()
 		{
 			foreach (Gizmo gizmo in base.GetGizmos())
@@ -209,31 +179,9 @@ namespace Rimdungeon.Traps
 				};
 			}
 			yield break;
-			yield break;
 		}
-
-		// Token: 0x04002CE5 RID: 11493
 		private bool autoRearm;
 
-		// Token: 0x04002CE6 RID: 11494
 		private List<Pawn> touchingPawns = new List<Pawn>();
-
-		// Token: 0x04002CE7 RID: 11495
-		private const float KnowerSpringChanceFactorSameFaction = 0.005f;
-
-		// Token: 0x04002CE8 RID: 11496
-		private const float KnowerSpringChanceFactorWildAnimal = 0.2f;
-
-		// Token: 0x04002CE9 RID: 11497
-		private const float KnowerSpringChanceFactorFactionlessHuman = 0.3f;
-
-		// Token: 0x04002CEA RID: 11498
-		private const float KnowerSpringChanceFactorOther = 0f;
-
-		// Token: 0x04002CEB RID: 11499
-		private const ushort KnowerPathFindCost = 800;
-
-		// Token: 0x04002CEC RID: 11500
-		private const ushort KnowerPathWalkCost = 40;
 	}
 }
