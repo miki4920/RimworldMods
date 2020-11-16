@@ -11,5 +11,6 @@ namespace Rimdungeon.Traps
         public float noFactionSpringChance = 0.3f;
         public ushort pathFindCost = 800;
         public ushort pathWalkCost = 40;
+        public bool rearmable = false;
     }
 }

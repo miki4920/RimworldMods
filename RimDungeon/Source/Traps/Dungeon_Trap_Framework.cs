@@ -71,6 +71,10 @@ namespace Rimdungeon.Traps
 		protected virtual float SpringChance(Pawn p)
 		{
 			float num = 1f;
+			if (!armed)
+			{
+				return 0f;
+			}
 			if (this.KnowsOfTrap(p))
 			{
 				if (p.Faction == null)
@@ -126,6 +130,8 @@ namespace Rimdungeon.Traps
 			bool spawned = base.Spawned;
 			Map map = base.Map;
 			this.SpringSub(p);
+			armed = false;
+			TrapDef.rearmable = true;
 			if (this.def.building.trapDestroyOnSpring)
 			{
 				if (!base.Destroyed)
@@ -175,12 +181,30 @@ namespace Rimdungeon.Traps
 					toggleAction = delegate ()
 					{
 						this.autoRearm = !this.autoRearm;
+						armed = !armed;
 					}
 				};
 			}
+			if (TrapDef.rearmable) {
+				yield return new Command_Toggle
+				{
+					defaultLabel = "CommandAutoRearm".Translate(),
+					defaultDesc = "CommandAutoRearmDesc".Translate(),
+					hotKey = KeyBindingDefOf.Misc3,
+					icon = TexCommand.RearmTrap,
+					isActive = (() => this.autoRearm),
+					toggleAction = Rearm
+			};
+			}
 			yield break;
 		}
+		public void Rearm()
+        {
+			armed = true;
+			TrapDef.rearmable = false;
+        }
 		private bool autoRearm;
+		private bool armed = true;
 
 		private List<Pawn> touchingPawns = new List<Pawn>();
 	}

@@ -112,8 +112,9 @@
     <designationHotKey>Misc6</designationHotKey>
 	<modExtensions>
 		<li Class="Rimdungeon.Traps.Dungeon_Trap_Def">
-			<canAutoRearm>false</canAutoRearm>
+			<canAutoRearm>true</canAutoRearm>
 			<numberOfAttacks>1</numberOfAttacks>
+			<rearmable>true</rearmable>
 		</li>
 	</modExtensions>
     <building>
