@@ -14,7 +14,19 @@ namespace Rimdungeon.Traps
 		{
 			get
 			{
-				return base.Faction == Faction.OfPlayer && this.def.blueprintDef != null && this.def.IsResearchFinished && TrapDef.canAutoRearm;
+				return base.Faction == Faction.OfPlayer && this.def.blueprintDef != null && this.def.IsResearchFinished && this.def.building.trapDestroyOnSpring;
+			}
+		}
+		public override Graphic Graphic
+		{
+			get
+			{
+				if (this.armed && TrapDef.rearmable)
+				{
+					return base.Graphic;
+				}
+				return this.def.building.trapUnarmedGraphicData.GraphicColoredFor(this);
+				
 			}
 		}
 		public override void ExposeData()
@@ -71,7 +83,7 @@ namespace Rimdungeon.Traps
 		protected virtual float SpringChance(Pawn p)
 		{
 			float num = 1f;
-			if (!armed)
+			if (!armed && this.TrapDef.rearmable)
 			{
 				return 0f;
 			}
@@ -130,8 +142,6 @@ namespace Rimdungeon.Traps
 			bool spawned = base.Spawned;
 			Map map = base.Map;
 			this.SpringSub(p);
-			armed = false;
-			TrapDef.rearmable = true;
 			if (this.def.building.trapDestroyOnSpring)
 			{
 				if (!base.Destroyed)
@@ -142,6 +152,11 @@ namespace Rimdungeon.Traps
 				{
 					this.CheckAutoRebuild(map);
 				}
+			}
+			else if (TrapDef.rearmable)
+			{
+				rearmable = true;
+				armed = false;
 			}
 		}
 		public override void Kill(DamageInfo? dinfo = null, Hediff exactCulprit = null)
@@ -181,31 +196,48 @@ namespace Rimdungeon.Traps
 					toggleAction = delegate ()
 					{
 						this.autoRearm = !this.autoRearm;
-						armed = !armed;
 					}
 				};
 			}
-			if (TrapDef.rearmable) {
+			if (rearmable) {
 				yield return new Command_Toggle
 				{
-					defaultLabel = "CommandAutoRearm".Translate(),
-					defaultDesc = "CommandAutoRearmDesc".Translate(),
-					hotKey = KeyBindingDefOf.Misc3,
+					defaultLabel = "CommandRearm".Translate(),
+					defaultDesc = "CommandRearmDesc".Translate(),
+					hotKey = KeyBindingDefOf.Misc4,
 					icon = TexCommand.RearmTrap,
-					isActive = (() => this.autoRearm),
+					isActive = (() => this.armed),
 					toggleAction = Rearm
 			};
 			}
 			yield break;
 		}
+
+		public override string GetInspectString()
+		{
+			string text = base.GetInspectString();
+			if (!text.NullOrEmpty())
+			{
+				text += "\n";
+			}
+			if (armed)
+			{
+				text += "TrapArmed".Translate();
+			}
+			else
+			{
+				text += "TrapNotArmed".Translate();
+			}
+			return text;
+		}
 		public void Rearm()
         {
 			armed = true;
-			TrapDef.rearmable = false;
+			rearmable = false;
         }
 		private bool autoRearm;
 		private bool armed = true;
-
+		private bool rearmable = false;
 		private List<Pawn> touchingPawns = new List<Pawn>();
 	}
 }

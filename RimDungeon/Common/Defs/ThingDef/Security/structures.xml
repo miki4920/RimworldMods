@@ -112,7 +112,6 @@
     <designationHotKey>Misc6</designationHotKey>
 	<modExtensions>
 		<li Class="Rimdungeon.Traps.Dungeon_Trap_Def">
-			<canAutoRearm>true</canAutoRearm>
 			<numberOfAttacks>1</numberOfAttacks>
 			<rearmable>true</rearmable>
 		</li>
@@ -123,6 +122,10 @@
       <trapDamageCategory>Sharp</trapDamageCategory>
       <expandHomeArea>false</expandHomeArea>
       <ai_chillDestination>false</ai_chillDestination>
+	  <trapUnarmedGraphicData>
+        <texPath>Things/Building/Ballista/BallistaBase</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+      </trapUnarmedGraphicData>
     </building>
     <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
   </ThingDef>
