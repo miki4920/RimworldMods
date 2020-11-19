@@ -25,8 +25,11 @@ namespace Rimdungeon.Traps
 				{
 					return base.Graphic;
 				}
-				return this.def.building.trapUnarmedGraphicData.GraphicColoredFor(this);
-				
+				else if (TrapDef.rearmable)
+                {
+					return this.def.building.trapUnarmedGraphicData.GraphicColoredFor(this);
+				}
+				return base.Graphic;
 			}
 		}
 		public override void ExposeData()

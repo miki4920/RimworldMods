@@ -26,12 +26,12 @@
     </graphicData>
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <statBases>
-      <MaxHitPoints>300</MaxHitPoints>
-      <WorkToBuild>135</WorkToBuild>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>640</WorkToBuild>
       <Flammability>1.0</Flammability>
       <MeditationFocusStrength>0.22</MeditationFocusStrength>
     </statBases>
-    <costStuffCount>5</costStuffCount>
+    <costStuffCount>10</costStuffCount>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <altitudeLayer>Building</altitudeLayer>
     <passability>Impassable</passability>
@@ -69,64 +69,5 @@
       </li>
     </damageMultipliers>
     <designationHotKey>Misc3</designationHotKey>
-  </ThingDef>
-  
-  <ThingDef ParentName="BuildingBase">
-    <defName>Caltrops</defName>
-    <label>caltrops</label>
-    <description>Five spikes under tension, connected to a touch-activated trigger. When the victim disturbs the trigger, the spikes spring forth and strike the victim. Since it is hidden in the surrounding terrain, it cannot be placed adjacent to other traps. Animals can sense these when calm.</description>
-    <thingClass>Rimdungeon.Traps.Dungeon_Trap</thingClass>
-    <graphicData>
-      <texPath>Things/Building/Traps/Caltrops</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <damageData>
-        <rect>(0,0,1,0.15)</rect>
-      </damageData>
-    </graphicData>
-    <altitudeLayer>Building</altitudeLayer>
-    <drawerType>RealtimeOnly</drawerType>
-    <rotatable>false</rotatable>
-    <tickerType>Normal</tickerType>
-    <stealable>false</stealable>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories>
-      <li>BuildingsSecurity</li>
-    </thingCategories>
-    <statBases>
-      <Mass>2.5</Mass>
-      <MaxHitPoints>40</MaxHitPoints>
-      <WorkToBuild>6400</WorkToBuild>
-      <Flammability>1</Flammability>
-      <Beauty>-18</Beauty>
-      <Cleanliness>-5</Cleanliness>
-      <TrapMeleeDamage>5</TrapMeleeDamage>
-      <TrapSpringChance>0.5</TrapSpringChance>
-    </statBases>
-    <stuffCategories>
-      <li>Metallic</li>
-      <li>Woody</li>
-      <li>Stony</li>
-    </stuffCategories>
-    <costStuffCount>100</costStuffCount>
-    <designationCategory>Security</designationCategory>
-    <designationHotKey>Misc6</designationHotKey>
-	<modExtensions>
-		<li Class="Rimdungeon.Traps.Dungeon_Trap_Def">
-			<numberOfAttacks>1</numberOfAttacks>
-			<rearmable>true</rearmable>
-		</li>
-	</modExtensions>
-    <building>
-      <isTrap>true</isTrap>
-      <trapDestroyOnSpring>false</trapDestroyOnSpring>
-      <trapDamageCategory>Sharp</trapDamageCategory>
-      <expandHomeArea>false</expandHomeArea>
-      <ai_chillDestination>false</ai_chillDestination>
-	  <trapUnarmedGraphicData>
-        <texPath>Things/Building/Ballista/BallistaBase</texPath>
-        <graphicClass>Graphic_Single</graphicClass>
-      </trapUnarmedGraphicData>
-    </building>
-    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
   </ThingDef>
  </Defs>
