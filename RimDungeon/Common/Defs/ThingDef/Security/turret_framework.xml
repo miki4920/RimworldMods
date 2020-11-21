@@ -1,0 +1,31 @@
+<Defs>
+	<ThingDef Name="BaseTurret" Abstract="True">
+		<category>Building</category>
+		<designationCategory>Security</designationCategory>
+		<thingClass>Building_TurretGun</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<hasTooltip>true</hasTooltip>
+		<size>(1,2)</size>
+		<statBases>
+			<SellPriceFactor>0.70</SellPriceFactor>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Mannable">
+				<manWorkType>Violent</manWorkType>
+			</li>
+		</comps>
+		<stealable>false</stealable>
+		<rotatable>true</rotatable>
+	</ThingDef>
+</Defs>

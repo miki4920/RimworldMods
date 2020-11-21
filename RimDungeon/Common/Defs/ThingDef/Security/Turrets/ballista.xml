@@ -1,0 +1,142 @@
+<Defs>
+	<ThingDef ParentName="BaseTurret">
+		<defName>Ballista_Turret</defName>
+		<label>ballista turret</label>
+		<description>A Ballista. Has a great stopping power and accuracy, but takes a long time to reload.</description>
+		<graphicData>
+			<texPath>Things/Building/Ballista/BallistaBase</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+			<shadowData>
+				<volume>(0.27,0.25,0.27)</volume>
+				<offset>(0,0,0)</offset>
+			</shadowData>
+		</graphicData>
+		<uiIconPath>Things/Building/Ballista/BallistaTop</uiIconPath>
+		<uiIconScale>0.90</uiIconScale>
+		<statBases>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<WorkToBuild>1800</WorkToBuild>
+			<Mass>8</Mass>
+			<Beauty>-20</Beauty>
+			<ShootingAccuracyTurret>0.98</ShootingAccuracyTurret>
+		</statBases>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<costList>
+			<WoodLog>130</WoodLog>
+			<Steel>40</Steel>
+		</costList>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<building>
+			<combatPower>45</combatPower>
+			<!-- same as a scavenger -->
+			<ai_combatDangerous>true</ai_combatDangerous>
+			<turretGunDef>Bow_Ballista_Multi</turretGunDef>
+			<turretBurstCooldownTime>8</turretBurstCooldownTime>
+		</building>
+		<placeWorkers>
+			<li>PlaceWorker_TurretTop</li>
+			<li>PlaceWorker_ShowTurretRadius</li>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>Greatbow</li>
+		</researchPrerequisites>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>Projectile_Ballista_Single</defName>
+		<label>ballista projectile single</label>
+		<graphicData>
+			<texPath>Things/Projectile/Pilum</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>ArrowHighVelocity</damageDef>
+			<damageAmountBase>36</damageAmountBase>
+			<armorPenetrationBase>0.25</armorPenetrationBase>
+			<stoppingPower>2.5</stoppingPower>
+			<speed>75</speed>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>Projectile_Ballista_Multi</defName>
+		<label>ballista projectile multi</label>
+		<graphicData>
+			<texPath>Things/Projectile/Pilum</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>ArrowHighVelocity</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationBase>0.25</armorPenetrationBase>
+			<stoppingPower>0.5</stoppingPower>
+			<speed>50</speed>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseWeaponTurret">
+		<defName>Bow_Ballista_Single</defName>
+		<label>Ballista-Bow-Single</label>
+		<description>A powerful bow made to be mounted on a ballista.</description>
+		<graphicData>
+			<texPath>Things/Building/Ballista/BallistaTop</texPath>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.2</AccuracyTouch>
+			<AccuracyShort>0.3</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0.9</AccuracyLong>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>5</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>Projectile_Ballista_Single</defaultProjectile>
+				<range>45.9</range>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Bow_Large</soundCast>
+				<consumeFuelPerShot>1</consumeFuelPerShot>
+			</li>
+		</verbs>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseWeaponTurret">
+		<defName>Bow_Ballista_Multi</defName>
+		<label>Ballista-Bow-Multi</label>
+		<description>A powerful bow made to be mounted on a ballista.</description>
+		<graphicData>
+			<texPath>Things/Building/Ballista/BallistaTop</texPath>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.9</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.3</AccuracyMedium>
+			<AccuracyLong>0.2</AccuracyLong>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Mass>5</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>Projectile_Ballista_Multi</defaultProjectile>
+				<range>45.9</range>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<burstShotCount>10</burstShotCount>
+				<soundCast>Bow_Large</soundCast>
+				<consumeFuelPerShot>1</consumeFuelPerShot>
+			</li>
+		</verbs>
+	</ThingDef>
+</Defs>
