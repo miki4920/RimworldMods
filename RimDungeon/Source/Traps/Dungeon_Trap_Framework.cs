@@ -126,15 +126,15 @@ namespace Rimdungeon.Traps
 			{
 				return 0;
 			}
-			return TrapDef.pathFindCost;
+			return (ushort) TrapDef.pathFindCost;
 		}
 		public override ushort PathWalkCostFor(Pawn p)
 		{
-			if (!this.KnowsOfTrap(p))
+			if (!this.KnowsOfTrap(p) && !TrapDef.slows)
 			{
 				return 0;
 			}
-			return TrapDef.pathWalkCost;
+			return (ushort) TrapDef.pathWalkCost;
 		}
 		public override bool IsDangerousFor(Pawn p)
 		{

@@ -24,7 +24,7 @@ namespace Rimdungeon.Traps
 				return;
 			}
 			float num = this.GetStatValue(StatDefOf.TrapMeleeDamage, true) * DamageRandomFactorRange.RandomInRange / this.TrapDef.numberOfAttacks;
-			float armorPenetration = num * 0.015f;
+			float armorPenetration = num * TrapDef.armorPenetration;
 			int num2 = 0;
 			while ((float)num2 < this.TrapDef.numberOfAttacks)
 			{
