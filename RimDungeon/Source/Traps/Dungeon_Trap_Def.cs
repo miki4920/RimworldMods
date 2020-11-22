@@ -12,6 +12,7 @@ namespace Rimdungeon.Traps
         public int pathWalkCost = 40;
         public bool rearmable = false;
         public bool slows = false;
+        public bool rebuildable = false;
         public float armorPenetration = 0.015f;
         public GraphicData trapUnarmedGraphicData;
     }

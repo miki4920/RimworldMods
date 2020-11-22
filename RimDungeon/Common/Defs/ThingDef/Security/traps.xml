@@ -169,7 +169,7 @@
 				<sameFactionSpringChance>0.1</sameFactionSpringChance>
 				<wildAnimalSpringChance>1</wildAnimalSpringChance>
 				<noFactionSpringChance>1</noFactionSpringChance>
-				<slows>true</slows>
+				<rebuildable>true</rebuildable>
 			</li>
 		</modExtensions>
 		<building>

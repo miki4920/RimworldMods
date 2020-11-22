@@ -10,11 +10,11 @@ namespace Rimdungeon.Traps
 	public abstract class Dungeon_Trap_Framework : Building
 	{
 		public Dungeon_Trap_Def TrapDef => base.def.GetModExtension<Dungeon_Trap_Def>();
-		private bool CanSetAutoRearm
+		private bool CanSetAutoRebuild
 		{
 			get
 			{
-				return base.Faction == Faction.OfPlayer && this.def.blueprintDef != null && this.def.IsResearchFinished && this.def.building.trapDestroyOnSpring;
+				return base.Faction == Faction.OfPlayer && this.def.blueprintDef != null && this.def.IsResearchFinished && (this.def.building.trapDestroyOnSpring || TrapDef.rebuildable);
 			}
 		}
 		public override Graphic Graphic
@@ -43,7 +43,7 @@ namespace Rimdungeon.Traps
 			base.SpawnSetup(map, respawningAfterLoad);
 			if (!respawningAfterLoad)
 			{
-				this.autoRearm = (this.CanSetAutoRearm && map.areaManager.Home[base.Position]);
+				this.autoRearm = (this.CanSetAutoRebuild && map.areaManager.Home[base.Position]);
 			}
 		}
 		public override void Tick()
@@ -175,7 +175,7 @@ namespace Rimdungeon.Traps
 		protected abstract void SpringSub(Pawn p);
 		private void CheckAutoRebuild(Map map)
 		{
-			if (this.autoRearm && this.CanSetAutoRearm && map != null && GenConstruct.CanPlaceBlueprintAt(this.def, base.Position, base.Rotation, map, false, null, null, base.Stuff).Accepted)
+			if (this.autoRearm && this.CanSetAutoRebuild && map != null && GenConstruct.CanPlaceBlueprintAt(this.def, base.Position, base.Rotation, map, false, null, null, base.Stuff).Accepted)
 			{
 				GenConstruct.PlaceBlueprintForBuild(this.def, base.Position, map, base.Rotation, Faction.OfPlayer, base.Stuff);
 			}
@@ -187,12 +187,12 @@ namespace Rimdungeon.Traps
 				yield return gizmo;
 			}
 			IEnumerator<Gizmo> enumerator = null;
-			if (this.CanSetAutoRearm)
+			if (this.CanSetAutoRebuild)
 			{
 				yield return new Command_Toggle
 				{
-					defaultLabel = "CommandAutoRearm".Translate(),
-					defaultDesc = "CommandAutoRearmDesc".Translate(),
+					defaultLabel = "CommandAutoRebuild".Translate(),
+					defaultDesc = "CommandAutoRebuildDesc".Translate(),
 					hotKey = KeyBindingDefOf.Misc3,
 					icon = TexCommand.RearmTrap,
 					isActive = (() => this.autoRearm),

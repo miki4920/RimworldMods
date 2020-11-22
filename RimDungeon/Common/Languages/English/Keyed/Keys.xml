@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
-  <DesignatorRearmTrap>Rearm trap</DesignatorRearmTrap>
-  <DesignatorRearmTrapDesc>Rearm a sprung trap so it can be triggered again.</DesignatorRearmTrapDesc>
+  
+  <CommandAutoRebuild>Rebuild Trap</CommandAutoRebuild>
+  <CommandAutoRebuildDesc>Automatically rebuild the trap after it is destroyed.</CommandAutoRebuildDesc>
   <CommandRearm>Rearm Trap</CommandRearm>
   <CommandRearmDesc>Rearm a sprung trap so it can be triggered again.</CommandRearmDesc>
   <TrapArmed>Armed</TrapArmed>
