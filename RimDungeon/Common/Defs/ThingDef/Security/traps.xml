@@ -119,6 +119,7 @@
 			<li>PlaceWorker_NeverAdjacentTrap</li>
 		</placeWorkers>
 	</ThingDef>
+	
 	<ThingDef ParentName="BuildingBase">
 		<defName>Oil_Trap</defName>
 		<label>oil trap</label>

@@ -14,19 +14,15 @@ namespace Rimdungeon.Traps
 		{
 			get
 			{
-				return base.Faction == Faction.OfPlayer && this.def.blueprintDef != null && this.def.IsResearchFinished && (this.def.building.trapDestroyOnSpring || TrapDef.rebuildable);
+				return base.Faction == Faction.OfPlayer && this.def.blueprintDef != null && this.def.IsResearchFinished && TrapDef.rebuildable;
 			}
 		}
 		public override Graphic Graphic
 		{
 			get
 			{
-				if (this.armed && TrapDef.rearmable)
+				if (!this.armed && TrapDef.rearmable)
 				{
-					return base.Graphic;
-				}
-				else if (TrapDef.rearmable)
-                {
 					return this.def.building.trapUnarmedGraphicData.GraphicColoredFor(this);
 				}
 				return base.Graphic;
@@ -36,6 +32,7 @@ namespace Rimdungeon.Traps
 		{
 			base.ExposeData();
 			Scribe_Values.Look<bool>(ref this.autoRearm, "autoRearm", false, false);
+			Scribe_Values.Look<bool>(ref this.armed, "armed", true, false);
 			Scribe_Collections.Look<Pawn>(ref this.touchingPawns, "testees", LookMode.Reference, Array.Empty<object>());
 		}
 		public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -122,7 +119,7 @@ namespace Rimdungeon.Traps
 		}
 		public override ushort PathFindCostFor(Pawn p)
 		{
-			if (!this.KnowsOfTrap(p))
+			if (!this.KnowsOfTrap(p) && !TrapDef.slows)
 			{
 				return 0;
 			}
@@ -145,6 +142,7 @@ namespace Rimdungeon.Traps
 			bool spawned = base.Spawned;
 			Map map = base.Map;
 			this.SpringSub(p);
+			armed = false;
 			if (this.def.building.trapDestroyOnSpring)
 			{
 				if (!base.Destroyed)
@@ -155,11 +153,6 @@ namespace Rimdungeon.Traps
 				{
 					this.CheckAutoRebuild(map);
 				}
-			}
-			else if (TrapDef.rearmable)
-			{
-				rearmable = true;
-				armed = false;
 			}
 		}
 		public override void Kill(DamageInfo? dinfo = null, Hediff exactCulprit = null)
@@ -202,7 +195,7 @@ namespace Rimdungeon.Traps
 					}
 				};
 			}
-			if (rearmable) {
+			if (!armed && TrapDef.rearmable) {
 				yield return new Command_Toggle
 				{
 					defaultLabel = "CommandRearm".Translate(),
@@ -236,11 +229,9 @@ namespace Rimdungeon.Traps
 		public void Rearm()
         {
 			armed = true;
-			rearmable = false;
         }
 		private bool autoRearm;
 		private bool armed = true;
-		private bool rearmable = false;
 		private List<Pawn> touchingPawns = new List<Pawn>();
 	}
 }
