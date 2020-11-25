@@ -33,11 +33,16 @@
 			<Steel>40</Steel>
 		</costList>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<modExtensions>
+			<li Class="Rimdungeon.Turrets.Dungeon_Turret_Def">
+				<secondaryGun>Bow_Ballista_Multi</secondaryGun>
+			</li>
+		</modExtensions>
 		<building>
 			<combatPower>45</combatPower>
 			<!-- same as a scavenger -->
 			<ai_combatDangerous>true</ai_combatDangerous>
-			<turretGunDef>Bow_Ballista_Multi</turretGunDef>
+			<turretGunDef>Bow_Ballista_Single</turretGunDef>
 			<turretBurstCooldownTime>8</turretBurstCooldownTime>
 		</building>
 		<placeWorkers>
