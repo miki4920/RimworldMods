@@ -20,6 +20,9 @@ namespace Rimdungeon.Traps
         public bool slows = false;
 
         public bool rebuildable = false;
-        
+
+        public float addHediffChance = 0.05f;
+        public HediffDef hediffToAdd = null;
+
     }
 }
