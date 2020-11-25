@@ -39,7 +39,7 @@
 			</li>
 		</modExtensions>
 		<building>
-			<combatPower>45</combatPower>
+			<combatPower>45</combatPower>	
 			<!-- same as a scavenger -->
 			<ai_combatDangerous>true</ai_combatDangerous>
 			<turretGunDef>Bow_Ballista_Single</turretGunDef>

@@ -52,7 +52,8 @@
     <Compile Include="Traps\Dungeon_Trap_Framework.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Traps\Dungeon_Trap_Def.cs" />
-    <Compile Include="Turrets\Dungeon_Turret_Framework.cs" />
+    <Compile Include="Turrets\Dungeon_Turret_Def.cs" />
+    <Compile Include="Turrets\Dungeon_Turret.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

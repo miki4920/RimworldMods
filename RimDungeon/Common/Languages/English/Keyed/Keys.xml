@@ -7,4 +7,6 @@
   <CommandRearmDesc>Rearm a sprung trap so it can be triggered again.</CommandRearmDesc>
   <TrapArmed>Armed</TrapArmed>
   <TrapNotArmed>Not armed</TrapNotArmed>
+  <SecondGun>Alt Fire</SecondGun>
+  <SecondGunDesc>Allows to swap between two modes of a turret. Usually single and multishot.</SecondGunDesc>
 </LanguageData>

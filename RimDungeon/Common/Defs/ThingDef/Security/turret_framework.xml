@@ -2,7 +2,7 @@
 	<ThingDef Name="BaseTurret" Abstract="True">
 		<category>Building</category>
 		<designationCategory>Security</designationCategory>
-		<thingClass>Building_TurretGun</thingClass>
+		<thingClass>RimDungeon.Turrets.Dungeon_Turret</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
 		<tickerType>Normal</tickerType>
 		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
