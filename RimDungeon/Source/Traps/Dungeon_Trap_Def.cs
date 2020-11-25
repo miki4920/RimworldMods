@@ -21,7 +21,7 @@ namespace Rimdungeon.Traps
 
         public bool rebuildable = false;
 
-        public float addHediffChance = 0.05f;
+        public float addHediffChance = 1.0f;
         public HediffDef hediffToAdd = null;
 
     }

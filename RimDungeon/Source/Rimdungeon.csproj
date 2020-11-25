@@ -42,6 +42,11 @@
     <None Include="..\Common\Patches\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Traps\AI\JobDriver_RearmTrap.cs" />
+    <Compile Include="Traps\AI\WorkGiver_RearmTrap.cs" />
+    <Compile Include="Traps\DefsOf\DesignationDefOf.cs" />
+    <Compile Include="Traps\DefsOf\JobDefOf.cs" />
+    <Compile Include="Traps\Designators\Designator_RearmTrap.cs" />
     <Compile Include="Traps\Dungeon_Trap.cs" />
     <Compile Include="Traps\Dungeon_Trap_Explosive.cs" />
     <Compile Include="Traps\Dungeon_Trap_Framework.cs" />
@@ -49,5 +54,6 @@
     <Compile Include="Traps\Dungeon_Trap_Def.cs" />
     <Compile Include="Turrets\Dungeon_Turret_Framework.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
