@@ -10,15 +10,11 @@ namespace Rimdungeon.Traps
 {
 	public abstract class Dungeon_Trap_Framework : Building
 	{
-		public void AddRearmDesignation()
-		{
-			base.Map.designationManager.AddDesignation(new Designation(this, DefsOf.DesignationDefOf.RearmTrap));
-		}
-		private bool canBeDesignatedRearm()
-		{
-			return !armed && Map.designationManager.AllDesignationsOn(this).Where(i => i.def == DefsOf.DesignationDefOf.RearmTrap).FirstOrDefault() == null;
-		}
 		public Dungeon_Trap_Def TrapDef => base.def.GetModExtension<Dungeon_Trap_Def>();
+		private bool autoRearm;
+		public bool armed = true;
+		private List<Pawn> touchingPawns = new List<Pawn>();
+
 		private bool CanSetAutoRebuild
 		{
 			get
@@ -182,6 +178,25 @@ namespace Rimdungeon.Traps
 				GenConstruct.PlaceBlueprintForBuild(this.def, base.Position, map, base.Rotation, Faction.OfPlayer, base.Stuff);
 			}
 		}
+
+		public override string GetInspectString()
+		{
+			string text = base.GetInspectString();
+			if (!text.NullOrEmpty())
+			{
+				text += "\n";
+			}
+			if (armed)
+			{
+				text += "TrapArmed".Translate();
+			}
+			else
+			{
+				text += "TrapNotArmed".Translate();
+			}
+			return text;
+		}
+
 		public override IEnumerable<Gizmo> GetGizmos()
 		{
 			foreach (Gizmo gizmo in base.GetGizmos())
@@ -212,35 +227,19 @@ namespace Rimdungeon.Traps
 					hotKey = KeyBindingDefOf.Misc4,
 					icon = TexCommand.RearmTrap,
 					isActive = (() => this.armed),
-					toggleAction = Rearm
+					toggleAction = AddRearmDesignation
 			};
 			}
 			yield break;
 		}
-
-		public override string GetInspectString()
+		public void AddRearmDesignation()
 		{
-			string text = base.GetInspectString();
-			if (!text.NullOrEmpty())
-			{
-				text += "\n";
-			}
-			if (armed)
-			{
-				text += "TrapArmed".Translate();
-			}
-			else
-			{
-				text += "TrapNotArmed".Translate();
-			}
-			return text;
+			base.Map.designationManager.AddDesignation(new Designation(this, DefsOf.DesignationDefOf.RearmTrap));
 		}
+
 		public void Rearm()
         {
 			armed = true;
         }
-		private bool autoRearm;
-		public bool armed = true;
-		private List<Pawn> touchingPawns = new List<Pawn>();
 	}
 }
