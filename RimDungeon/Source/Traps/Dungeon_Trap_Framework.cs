@@ -219,15 +219,14 @@ namespace Rimdungeon.Traps
 					}
 				};
 			}
-			if (!armed && TrapDef.rearmable) {
-				yield return new Command_Toggle
+			if (!armed && TrapDef.rearmable && CanBeDesignatedRearm()) {
+				yield return new Command_Action
 				{
 					defaultLabel = "CommandRearm".Translate(),
 					defaultDesc = "CommandRearmDesc".Translate(),
 					hotKey = KeyBindingDefOf.Misc4,
 					icon = TexCommand.RearmTrap,
-					isActive = (() => this.armed),
-					toggleAction = AddRearmDesignation
+					action = AddRearmDesignation
 			};
 			}
 			yield break;
@@ -235,6 +234,11 @@ namespace Rimdungeon.Traps
 		public void AddRearmDesignation()
 		{
 			base.Map.designationManager.AddDesignation(new Designation(this, DefsOf.DesignationDefOf.RearmTrap));
+		}
+
+		private bool CanBeDesignatedRearm()
+		{
+			return !armed && Map.designationManager.AllDesignationsOn(this).Where(i => i.def == DefsOf.DesignationDefOf.RearmTrap).FirstOrDefault() == null;
 		}
 
 		public void Rearm()

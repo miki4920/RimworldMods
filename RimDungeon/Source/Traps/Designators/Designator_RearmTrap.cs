@@ -11,8 +11,8 @@ namespace Rimdungeon.Traps.Designators
     {
         public Designator_RearmTrap()
         {
-            this.defaultLabel = "DesignatorRearmTrap".Translate();
-            this.defaultDesc = "DesignatorRearmTrapDesc".Translate();
+            this.defaultLabel = "CommandRearm".Translate();
+            this.defaultDesc = "CommandRearmDesc".Translate();
             this.icon = ContentFinder<Texture2D>.Get("UI/Designators/RearmTrap", true);
             this.soundDragSustain = SoundDefOf.Designate_DragStandard;
             this.soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
