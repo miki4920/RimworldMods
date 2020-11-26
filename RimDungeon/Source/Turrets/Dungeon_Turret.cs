@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using Verse;
 
@@ -35,9 +36,10 @@ namespace Rimdungeon.Turrets
             else
             {
                 this.gun = ThingMaker.MakeThing(this.def.building.turretGunDef, null);
-                
+
             }
             this.UpdateGunVerbs();
+            this.burstCooldownTicksLeft = this.BurstCooldownTime().SecondsToTicks();
         }
 
         public override IEnumerable<Gizmo> GetGizmos()
@@ -47,23 +49,59 @@ namespace Rimdungeon.Turrets
                 yield return gizmo;
             }
             IEnumerator<Gizmo> enumerator = null;
-            if (!(TurretDef.secondaryGun is null))
+            if (!(TurretDef.secondaryGun is null) && !secondaryGun)
             {
-                yield return new Command_Toggle
+                yield return new Command_Action
                 {
                     defaultLabel = "SecondGun".Translate(),
                     defaultDesc = "SecondGunDesc".Translate(),
                     icon = ContentFinder<Texture2D>.Get("UI/Commands/HoldFire", true),
-                    toggleAction = delegate ()
+                    action = delegate ()
                     {
-                        secondaryGun = !secondaryGun;
+                        secondaryGun = true;
                         DetermineGun();
                     },
-                    isActive = (() => secondaryGun)
+                };
+            }
+            if (!(TurretDef.secondaryGun is null) && secondaryGun)
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = "FirstGun".Translate(),
+                    defaultDesc = "FirstGunDesc".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/HoldFire", true),
+                    action = delegate ()
+                    {
+                        secondaryGun = false;
+                        DetermineGun();
+                    },
                 };
             }
             yield break;
 
+        }
+        public override string GetInspectString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            string inspectString = base.GetInspectString();
+            if (!inspectString.NullOrEmpty())
+            {
+                stringBuilder.AppendLine(inspectString);
+            }
+            if (!secondaryGun)
+            {
+                stringBuilder.AppendLine("FirstGunMode".Translate());
+            }
+            if (secondaryGun)
+            {
+                stringBuilder.AppendLine("SecondGunMode".Translate());
+            }
+            return stringBuilder.ToString().TrimEndNewlines();
+        }
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look<bool>(ref secondaryGun, "secondaryGun", false, false);
         }
     }
 }

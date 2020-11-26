@@ -55,16 +55,18 @@
 		</researchPrerequisites>
 	</ThingDef>
 	
-	<ThingDef ParentName="BaseProjectileNeolithic">
+	<ThingDef ParentName="BaseBullet">
 		<defName>Projectile_Ballista_Single</defName>
 		<label>ballista projectile single</label>
 		<graphicData>
 			<texPath>Things/Projectile/Pilum</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>ArrowHighVelocity</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>36</damageAmountBase>
+			<explosionRadius>0.5</explosionRadius>
 			<armorPenetrationBase>0.25</armorPenetrationBase>
 			<stoppingPower>2.5</stoppingPower>
 			<speed>75</speed>
@@ -108,6 +110,7 @@
 				<verbClass>Verb_Shoot</verbClass>
 				<defaultProjectile>Projectile_Ballista_Single</defaultProjectile>
 				<range>45.9</range>
+				<forcedMissRadius>1</forcedMissRadius>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>1</burstShotCount>
 				<soundCast>Bow_Large</soundCast>
