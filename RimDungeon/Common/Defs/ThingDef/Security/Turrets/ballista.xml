@@ -39,7 +39,7 @@
 			</li>
 		</modExtensions>
 		<building>
-			<combatPower>45</combatPower>	
+			<combatPower>45</combatPower>
 			<!-- same as a scavenger -->
 			<ai_combatDangerous>true</ai_combatDangerous>
 			<turretGunDef>Bow_Ballista_Single</turretGunDef>
@@ -54,7 +54,6 @@
 			<li>Greatbow</li>
 		</researchPrerequisites>
 	</ThingDef>
-	
 	<ThingDef ParentName="BaseBullet">
 		<defName>Projectile_Ballista_Single</defName>
 		<label>ballista projectile single</label>
@@ -64,7 +63,7 @@
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>Bomb</damageDef>
+			<damageDef>Bolt</damageDef>
 			<damageAmountBase>36</damageAmountBase>
 			<explosionRadius>0.5</explosionRadius>
 			<armorPenetrationBase>0.25</armorPenetrationBase>
@@ -72,7 +71,6 @@
 			<speed>75</speed>
 		</projectile>
 	</ThingDef>
-	
 	<ThingDef ParentName="BaseProjectileNeolithic">
 		<defName>Projectile_Ballista_Multi</defName>
 		<label>ballista projectile multi</label>
@@ -88,7 +86,6 @@
 			<speed>50</speed>
 		</projectile>
 	</ThingDef>
-	
 	<ThingDef ParentName="BaseWeaponTurret">
 		<defName>Bow_Ballista_Single</defName>
 		<label>Ballista-Bow-Single</label>
@@ -97,10 +94,10 @@
 			<texPath>Things/Building/Ballista/BallistaTop</texPath>
 		</graphicData>
 		<statBases>
-			<AccuracyTouch>0.2</AccuracyTouch>
-			<AccuracyShort>0.3</AccuracyShort>
-			<AccuracyMedium>0.5</AccuracyMedium>
-			<AccuracyLong>0.9</AccuracyLong>
+			<AccuracyTouch>0.20</AccuracyTouch>
+			<AccuracyShort>0.30</AccuracyShort>
+			<AccuracyMedium>0.40</AccuracyMedium>
+			<AccuracyLong>0.95</AccuracyLong>
 			<DeteriorationRate>0</DeteriorationRate>
 			<Mass>5</Mass>
 			<Flammability>0</Flammability>
@@ -118,7 +115,6 @@
 			</li>
 		</verbs>
 	</ThingDef>
-	
 	<ThingDef ParentName="BaseWeaponTurret">
 		<defName>Bow_Ballista_Multi</defName>
 		<label>Ballista-Bow-Multi</label>
@@ -127,10 +123,10 @@
 			<texPath>Things/Building/Ballista/BallistaTop</texPath>
 		</graphicData>
 		<statBases>
-			<AccuracyTouch>0.9</AccuracyTouch>
-			<AccuracyShort>0.5</AccuracyShort>
-			<AccuracyMedium>0.3</AccuracyMedium>
-			<AccuracyLong>0.2</AccuracyLong>
+			<AccuracyTouch>0.7</AccuracyTouch>
+			<AccuracyShort>0.6</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0.4</AccuracyLong>
 			<DeteriorationRate>0</DeteriorationRate>
 			<Mass>5</Mass>
 			<Flammability>0</Flammability>
