@@ -64,9 +64,9 @@
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<damageDef>Bolt</damageDef>
-			<damageAmountBase>36</damageAmountBase>
+			<damageAmountBase>50</damageAmountBase>
 			<explosionRadius>0.5</explosionRadius>
-			<armorPenetrationBase>0.25</armorPenetrationBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
 			<stoppingPower>2.5</stoppingPower>
 			<speed>75</speed>
 		</projectile>
@@ -81,7 +81,7 @@
 		<projectile>
 			<damageDef>ArrowHighVelocity</damageDef>
 			<damageAmountBase>10</damageAmountBase>
-			<armorPenetrationBase>0.25</armorPenetrationBase>
+			<armorPenetrationBase>0.1</armorPenetrationBase>
 			<stoppingPower>0.5</stoppingPower>
 			<speed>50</speed>
 		</projectile>
@@ -94,9 +94,9 @@
 			<texPath>Things/Building/Ballista/BallistaTop</texPath>
 		</graphicData>
 		<statBases>
-			<AccuracyTouch>0.20</AccuracyTouch>
-			<AccuracyShort>0.30</AccuracyShort>
-			<AccuracyMedium>0.40</AccuracyMedium>
+			<AccuracyTouch>0.7</AccuracyTouch>
+			<AccuracyShort>0.8</AccuracyShort>
+			<AccuracyMedium>0.9</AccuracyMedium>
 			<AccuracyLong>0.95</AccuracyLong>
 			<DeteriorationRate>0</DeteriorationRate>
 			<Mass>5</Mass>
@@ -107,10 +107,10 @@
 				<verbClass>Verb_Shoot</verbClass>
 				<defaultProjectile>Projectile_Ballista_Single</defaultProjectile>
 				<range>45.9</range>
-				<forcedMissRadius>1</forcedMissRadius>
+				<forcedMissRadius>5</forcedMissRadius>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>1</burstShotCount>
-				<soundCast>Bow_Large</soundCast>
+				<soundCast>Ballista_Release</soundCast>
 				<consumeFuelPerShot>1</consumeFuelPerShot>
 			</li>
 		</verbs>
@@ -138,7 +138,7 @@
 				<range>45.9</range>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>10</burstShotCount>
-				<soundCast>Bow_Large</soundCast>
+				<soundCast>Ballista_Release</soundCast>
 				<consumeFuelPerShot>1</consumeFuelPerShot>
 			</li>
 		</verbs>

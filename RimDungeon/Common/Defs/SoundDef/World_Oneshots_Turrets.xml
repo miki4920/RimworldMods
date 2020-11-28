@@ -1,0 +1,33 @@
+<Defs>
+<SoundDef>
+    <defName>Ballista_Bolt</defName>  
+    <context>MapOnly</context>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Ballista_Impact</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>60.70111~70.30627</volumeRange>      
+        <pitchRange>0.6976015~0.7769372</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>Ballista_Release</defName>  
+    <context>MapOnly</context>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Ballista_Release</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>90.70111~100.30627</volumeRange>      
+        <pitchRange>0.6976015~0.7769372</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+ </Defs>

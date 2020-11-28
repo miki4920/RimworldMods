@@ -22,7 +22,7 @@
     <explosionCellMote>Mote_BlastDry</explosionCellMote>
     <explosionColorCenter>(0.6, 0.46, 0.32)</explosionColorCenter>
     <explosionColorEdge>(0.61, 0.48, 0.35)</explosionColorEdge>
-    <soundExplosion>Bow_Large</soundExplosion>
+    <soundExplosion>Ballista_Bolt</soundExplosion>
     <combatLogRules>Damage_Bomb</combatLogRules>
   </DamageDef>
  </Defs>
