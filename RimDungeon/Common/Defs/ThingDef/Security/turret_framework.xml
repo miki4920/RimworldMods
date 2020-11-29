@@ -15,7 +15,6 @@
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<hasTooltip>true</hasTooltip>
-		<size>(1,2)</size>
 		<statBases>
 			<SellPriceFactor>0.70</SellPriceFactor>
 		</statBases>

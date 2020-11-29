@@ -14,7 +14,7 @@ namespace Rimdungeon.Turrets
         public override void PostMake()
         {
             base.PostMake();
-            this.DetermineGun();
+            DetermineGun();
 
         }
         private void UpdateGunVerbs()

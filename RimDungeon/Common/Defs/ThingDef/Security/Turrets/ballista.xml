@@ -3,6 +3,7 @@
 		<defName>Ballista_Turret</defName>
 		<label>ballista turret</label>
 		<description>A Ballista. Has a great stopping power and accuracy, but takes a long time to reload.</description>
+		<size>(1,2)</size>
 		<graphicData>
 			<texPath>Things/Building/Ballista/BallistaBase</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -35,14 +36,14 @@
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 		<modExtensions>
 			<li Class="Rimdungeon.Turrets.Dungeon_Turret_Def">
-				<secondaryGun>Bow_Ballista_Multi</secondaryGun>
+				<secondaryGun>Ballista_Multi</secondaryGun>
 			</li>
 		</modExtensions>
 		<building>
 			<combatPower>45</combatPower>
 			<!-- same as a scavenger -->
 			<ai_combatDangerous>true</ai_combatDangerous>
-			<turretGunDef>Bow_Ballista_Single</turretGunDef>
+			<turretGunDef>Ballista_Single</turretGunDef>
 			<turretBurstCooldownTime>8</turretBurstCooldownTime>
 		</building>
 		<placeWorkers>
@@ -87,8 +88,8 @@
 		</projectile>
 	</ThingDef>
 	<ThingDef ParentName="BaseWeaponTurret">
-		<defName>Bow_Ballista_Single</defName>
-		<label>Ballista-Bow-Single</label>
+		<defName>Ballista_Single</defName>
+		<label>Ballista-Single</label>
 		<description>A powerful bow made to be mounted on a ballista.</description>
 		<graphicData>
 			<texPath>Things/Building/Ballista/BallistaTop</texPath>
@@ -116,8 +117,8 @@
 		</verbs>
 	</ThingDef>
 	<ThingDef ParentName="BaseWeaponTurret">
-		<defName>Bow_Ballista_Multi</defName>
-		<label>Ballista-Bow-Multi</label>
+		<defName>Ballista_Multi</defName>
+		<label>Ballista-Multi</label>
 		<description>A powerful bow made to be mounted on a ballista.</description>
 		<graphicData>
 			<texPath>Things/Building/Ballista/BallistaTop</texPath>

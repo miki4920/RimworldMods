@@ -1,0 +1,33 @@
+<Defs>
+<SoundDef>
+    <defName>Catapult_Bolt</defName>  
+    <context>MapOnly</context>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Catapult_Impact</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>40.70111~50.30627</volumeRange>      
+        <pitchRange>0.6976015~0.7769372</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>Catapult_Release</defName>  
+    <context>MapOnly</context>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Catapult_Release</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>40.70111~50.30627</volumeRange>      
+        <pitchRange>0.6976015~0.7769372</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+ </Defs>
