@@ -46,32 +46,14 @@
 			<turretGunDef>Catapult_Single</turretGunDef>
 			<turretBurstCooldownTime>8</turretBurstCooldownTime>
 		</building>
+		<inspectorTabs>
+			<li>ITab_Shells</li>
+		</inspectorTabs>
 		<placeWorkers>
 			<li>PlaceWorker_TurretTop</li>
 			<li>PlaceWorker_ShowTurretRadius</li>
 			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
 		</placeWorkers>
-		<comps>
-		<li Class="CompProperties_Refuelable">
-			<fuelLabel>Load Status</fuelLabel>
-			<fuelGizmoLabel>Load</fuelGizmoLabel>
-			<outOfFuelMessage>Cannot shoot: No Stone Loaded</outOfFuelMessage>
-			<fuelFilter>
-				<thingDefs>
-					<li>Steel</li>
-				</thingDefs>
-			</fuelFilter>
-			<fuelCapacity>1</fuelCapacity>
-			<fuelMultiplier>1</fuelMultiplier>
-			<initialFuelPercent>1</initialFuelPercent>
-			<autoRefuelPercent>0.5</autoRefuelPercent>
-			<showFuelGizmo>true</showFuelGizmo>
-			<minimumFueledThreshold>1</minimumFueledThreshold>
-			<factorByDifficulty>true</factorByDifficulty>
-			<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-			<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
-		</li>
-		</comps>
 		<researchPrerequisites>
 			<li>Greatbow</li>
 		</researchPrerequisites>
@@ -117,6 +99,33 @@
 		<graphicData>
 			<texPath>Things/Building/Catapult/CatapultTop</texPath>
 		</graphicData>
+		<comps>
+			<li Class="CompProperties_ChangeableProjectile"/>
+		</comps>
+		<building>
+      <fixedStorageSettings>
+        <filter>
+          <thingDefs>
+            <li>ChunkSandstone</li>
+            <li>ChunkGranite</li>
+            <li>ChunkLimestone</li>
+            <li>ChunkSlate</li>
+            <li>ChunkMarble</li>
+          </thingDefs>	  
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <filter>
+          <thingDefs>
+            <li>ChunkSandstone</li>
+            <li>ChunkGranite</li>
+            <li>ChunkLimestone</li>
+            <li>ChunkSlate</li>
+            <li>ChunkMarble</li>			
+          </thingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
 		<statBases>
 			<AccuracyTouch>0.7</AccuracyTouch>
 			<AccuracyShort>0.8</AccuracyShort>
@@ -135,7 +144,6 @@
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>1</burstShotCount>
 				<soundCast>Catapult_Release</soundCast>
-				<consumeFuelPerShot>1</consumeFuelPerShot>
 			</li>
 		</verbs>
 	</ThingDef>
@@ -146,6 +154,25 @@
 		<graphicData>
 			<texPath>Things/Building/Catapult/CatapultTop</texPath>
 		</graphicData>
+		<comps>
+			<li Class="CompProperties_ChangeableProjectile"/>
+		</comps>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+				</filter>
+			</defaultStorageSettings>
+		</building>
 		<statBases>
 			<AccuracyTouch>0.7</AccuracyTouch>
 			<AccuracyShort>0.6</AccuracyShort>
@@ -164,7 +191,6 @@
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>10</burstShotCount>
 				<soundCast>Catapult_Release</soundCast>
-				<consumeFuelPerShot>1</consumeFuelPerShot>
 			</li>
 		</verbs>
 	</ThingDef>
