@@ -29,9 +29,13 @@ namespace Rimdungeon.Turrets
         }
         public void DetermineGun()
         {
+            CompChangeableProjectile projectile = null;
+            if (this.gun != null) {
+                projectile = this.gun.TryGetComp<CompChangeableProjectile>();
+            }
             if (secondaryGun)
             {
-                this.gun = ThingMaker.MakeThing(TurretDef.secondaryGun, null);
+                this.gun = ThingMaker.MakeThing(TurretDef.secondaryGun, null);             
             }
             else
             {
@@ -39,6 +43,16 @@ namespace Rimdungeon.Turrets
 
             }
             this.UpdateGunVerbs();
+            if (projectile != null)
+            {
+                    ThingDef shell = projectile.LoadedShell;
+                    int shell_count = projectile.loadedCount;
+                    if (this.gun.TryGetComp<CompChangeableProjectile>().Loaded)
+                    {
+                        this.gun.TryGetComp<CompChangeableProjectile>().RemoveShell();
+                    }
+                    this.gun.TryGetComp<CompChangeableProjectile>().LoadShell(shell, shell_count);
+            }
             this.burstCooldownTicksLeft = this.BurstCooldownTime().SecondsToTicks();
         }
 
