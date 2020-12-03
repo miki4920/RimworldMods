@@ -16,8 +16,7 @@
 	<Operation Class="PatchOperationReplace">
 		<xpath>/Defs/ThingDef[@Name = "ChunkRockBase"]/projectileWhenLoaded</xpath>
 		<value>
-			<projectileWhenLoaded>Projectile_Catapult_Multi</projectileWhenLoaded>	
+			<projectileWhenLoaded>Projectile_Catapult_Single</projectileWhenLoaded>	
 		</value>
 	</Operation>	
-	
 </Patch>

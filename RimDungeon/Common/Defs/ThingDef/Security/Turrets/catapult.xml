@@ -69,7 +69,7 @@
 		<projectile>
 			<damageDef>Catapult_Stone</damageDef>
 			<damageAmountBase>75</damageAmountBase>
-			<explosionRadius>1</explosionRadius>
+			<explosionRadius>2</explosionRadius>
 			<armorPenetrationBase>0.5</armorPenetrationBase>
 			<stoppingPower>2.5</stoppingPower>
 			<speed>50</speed>

@@ -11,6 +11,7 @@ namespace Rimdungeon.Turrets
     {
         public Dungeon_Turret_Def TurretDef => base.def.GetModExtension<Dungeon_Turret_Def>();
         bool secondaryGun = false;
+        bool changedShell = false;
         public override void PostMake()
         {
             base.PostMake();
@@ -30,37 +31,60 @@ namespace Rimdungeon.Turrets
         public void DetermineGun()
         {
             CompChangeableProjectile projectile = null;
-            if (this.gun != null) {
+            int burst_count = 1;
+            if (this.gun != null)
+            {
                 projectile = this.gun.TryGetComp<CompChangeableProjectile>();
+                burst_count = this.AttackVerb.verbProps.burstShotCount;
             }
             if (secondaryGun)
             {
-                this.gun = ThingMaker.MakeThing(TurretDef.secondaryGun, null);             
+                this.gun = ThingMaker.MakeThing(TurretDef.secondaryGun, null);
             }
             else
             {
                 this.gun = ThingMaker.MakeThing(this.def.building.turretGunDef, null);
 
             }
+
             this.UpdateGunVerbs();
-            if (projectile != null)
+            if (projectile != null && projectile.Loaded && projectile.LoadedShell != this.AttackVerb.verbProps.defaultProjectile)
             {
-                    ThingDef shell = projectile.LoadedShell;
-                    int shell_count = projectile.loadedCount;
-                    if (this.gun.TryGetComp<CompChangeableProjectile>().Loaded)
-                    {
-                        this.gun.TryGetComp<CompChangeableProjectile>().RemoveShell();
-                    }
-                    this.gun.TryGetComp<CompChangeableProjectile>().LoadShell(shell, shell_count);
+                ThingDef shell = projectile.LoadedShell;
+                shell.projectileWhenLoaded = this.AttackVerb.verbProps.defaultProjectile;
+                this.gun.TryGetComp<CompChangeableProjectile>().LoadShell(shell, this.AttackVerb.verbProps.burstShotCount);
             }
             this.burstCooldownTicksLeft = this.BurstCooldownTime().SecondsToTicks();
         }
+        
+        public override void Tick()
+        {
+            base.Tick();
+            CompChangeableProjectile projectile = this.gun.TryGetComp<CompChangeableProjectile>();
+            int burst_count = this.AttackVerb.verbProps.burstShotCount;
+            if (!changedShell && projectile.Loaded && projectile.LoadedShell != this.AttackVerb.verbProps.defaultProjectile)
+            {
+                changedShell = true;
+                ThingDef shell = projectile.LoadedShell;
+                shell.projectileWhenLoaded = this.AttackVerb.verbProps.defaultProjectile;
+                this.gun.TryGetComp<CompChangeableProjectile>().LoadShell(shell, this.AttackVerb.verbProps.burstShotCount);
+            }
+            else if(!projectile.Loaded)
+            {
+                changedShell = false;
+            }
+            {
 
+            }
+        }
         public override IEnumerable<Gizmo> GetGizmos()
         {
             foreach (Gizmo gizmo in base.GetGizmos())
             {
-                yield return gizmo;
+                if(!gizmo.ToString().Contains("Extract"))
+                {
+                    yield return gizmo;
+                }
             }
             IEnumerator<Gizmo> enumerator = null;
             if (!(TurretDef.secondaryGun is null) && !secondaryGun)
