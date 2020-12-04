@@ -1,5 +1,5 @@
 <Defs>
-	<ThingDef Name="BaseTurret" Abstract="True">
+	<ThingDef Name="BaseDungeonTurret" Abstract="True">
 		<category>Building</category>
 		<designationCategory>Security</designationCategory>
 		<thingClass>RimDungeon.Turrets.Dungeon_Turret</thingClass>

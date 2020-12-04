@@ -1,5 +1,5 @@
 <Defs>
-	<ThingDef ParentName="BaseTurret">
+	<ThingDef ParentName="BaseDungeonTurret">
 		<defName>Catapult_Turret</defName>
 		<label>catapult turret</label>
 		<description>A Catapult. Throws chunks of stone over huge distances. Innacurate and take time to reload but deadly.</description>
@@ -30,8 +30,8 @@
 		<pathCost>50</pathCost>
 		<fillPercent>0.4</fillPercent>
 		<costList>
-			<WoodLog>130</WoodLog>
-			<Steel>40</Steel>
+			<WoodLog>300</WoodLog>
+			<Steel>100</Steel>
 		</costList>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
 		<modExtensions>
@@ -41,7 +41,6 @@
 		</modExtensions>
 		<building>
 			<combatPower>45</combatPower>
-			<!-- same as a scavenger -->
 			<ai_combatDangerous>true</ai_combatDangerous>
 			<turretGunDef>Catapult_Single</turretGunDef>
 			<turretBurstCooldownTime>8</turretBurstCooldownTime>

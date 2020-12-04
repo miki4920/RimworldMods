@@ -1,5 +1,5 @@
 <Defs>
-	<ThingDef ParentName="BaseTurret">
+	<ThingDef ParentName="BaseDungeonTurret">
 		<defName>Ballista_Turret</defName>
 		<label>ballista turret</label>
 		<description>A Ballista. Has a great stopping power and accuracy, but takes a long time to reload.</description>
@@ -39,6 +39,27 @@
 				<secondaryGun>Ballista_Multi</secondaryGun>
 			</li>
 		</modExtensions>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelLabel>Bolts until rearm</fuelLabel>
+				<fuelGizmoLabel>Wooden Bolts</fuelGizmoLabel>
+				<outOfFuelMessage>Cannot shoot: No wood for bolts</outOfFuelMessage>
+				<fuelFilter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</fuelFilter>
+				<fuelCapacity>100</fuelCapacity>
+				<fuelMultiplier>1</fuelMultiplier>
+				<initialFuelPercent>1</initialFuelPercent>
+				<autoRefuelPercent>0.5</autoRefuelPercent>
+				<showFuelGizmo>true</showFuelGizmo>
+				<minimumFueledThreshold>1</minimumFueledThreshold>
+				<factorByDifficulty>true</factorByDifficulty>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+			</li>
+		</comps>
 		<building>
 			<combatPower>45</combatPower>
 			<!-- same as a scavenger -->
@@ -107,12 +128,13 @@
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<defaultProjectile>Projectile_Ballista_Single</defaultProjectile>
+				<minRange>11.9</minRange>
 				<range>45.9</range>
-				<forcedMissRadius>5</forcedMissRadius>
+				<forcedMissRadius>1</forcedMissRadius>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>1</burstShotCount>
 				<soundCast>Ballista_Release</soundCast>
-				<consumeFuelPerShot>1</consumeFuelPerShot>
+				<consumeFuelPerShot>5</consumeFuelPerShot>
 			</li>
 		</verbs>
 	</ThingDef>
@@ -136,7 +158,7 @@
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<defaultProjectile>Projectile_Ballista_Multi</defaultProjectile>
-				<range>45.9</range>
+				<range>28.9</range>
 				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>10</burstShotCount>
 				<soundCast>Ballista_Release</soundCast>
