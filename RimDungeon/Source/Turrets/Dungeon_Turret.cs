@@ -31,11 +31,9 @@ namespace Rimdungeon.Turrets
         public void DetermineGun()
         {
             CompChangeableProjectile projectile = null;
-            int burst_count = 1;
             if (this.gun != null)
             {
                 projectile = this.gun.TryGetComp<CompChangeableProjectile>();
-                burst_count = this.AttackVerb.verbProps.burstShotCount;
             }
             if (secondaryGun)
             {
@@ -61,21 +59,21 @@ namespace Rimdungeon.Turrets
         {
             base.Tick();
             CompChangeableProjectile projectile = this.gun.TryGetComp<CompChangeableProjectile>();
-            int burst_count = this.AttackVerb.verbProps.burstShotCount;
-            if (!changedShell && projectile.Loaded && projectile.LoadedShell != this.AttackVerb.verbProps.defaultProjectile)
+            if (projectile != null)
             {
-                changedShell = true;
-                ThingDef shell = projectile.LoadedShell;
-                shell.projectileWhenLoaded = this.AttackVerb.verbProps.defaultProjectile;
-                this.gun.TryGetComp<CompChangeableProjectile>().LoadShell(shell, this.AttackVerb.verbProps.burstShotCount);
-            }
-            else if(!projectile.Loaded)
+                if (!changedShell && projectile.Loaded && projectile.LoadedShell != this.AttackVerb.verbProps.defaultProjectile)
+                {
+                    changedShell = true;
+                    ThingDef shell = projectile.LoadedShell;
+                    shell.projectileWhenLoaded = this.AttackVerb.verbProps.defaultProjectile;
+                    this.gun.TryGetComp<CompChangeableProjectile>().LoadShell(shell, this.AttackVerb.verbProps.burstShotCount);
+                }
+                else if (!projectile.Loaded)
             {
-                changedShell = false;
+                    changedShell = false;
+                }
             }
-            {
-
-            }
+            
         }
         public override IEnumerable<Gizmo> GetGizmos()
         {
