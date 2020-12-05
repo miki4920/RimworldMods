@@ -1,34 +1,19 @@
 <Defs>
 	<ThingDef ParentName="BaseDungeonTurret">
 		<defName>Catapult_Turret</defName>
-		<label>catapult turret</label>
+		<label>Catapult</label>
 		<description>A Catapult. Throws chunks of stone over huge distances. Innacurate and take time to reload but deadly.</description>
 		<size>(2,2)</size>
 		<graphicData>
 			<texPath>Things/Building/Catapult/CatapultBase</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2,2)</drawSize>
-			<damageData>
-				<rect>(0.2,0.2,0.6,0.6)</rect>
-			</damageData>
-			<shadowData>
-				<volume>(0.27,0.25,0.27)</volume>
-				<offset>(0,0,0)</offset>
-			</shadowData>
 		</graphicData>
 		<uiIconPath>Things/Building/Catapult/CatapultTop</uiIconPath>
-		<uiIconScale>0.90</uiIconScale>
 		<statBases>
 			<MaxHitPoints>180</MaxHitPoints>
-			<Flammability>1</Flammability>
 			<WorkToBuild>1800</WorkToBuild>
-			<Mass>8</Mass>
-			<Beauty>-20</Beauty>
 			<ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
 		</statBases>
-		<passability>PassThroughOnly</passability>
-		<pathCost>50</pathCost>
-		<fillPercent>0.4</fillPercent>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<costList>
 			<WoodLog>300</WoodLog>
 			<Steel>100</Steel>
@@ -40,8 +25,6 @@
 			</li>
 		</modExtensions>
 		<building>
-			<combatPower>45</combatPower>
-			<ai_combatDangerous>true</ai_combatDangerous>
 			<turretGunDef>Catapult_Single</turretGunDef>
 			<turretBurstCooldownTime>8</turretBurstCooldownTime>
 		</building>
@@ -49,102 +32,59 @@
 			<li>ITab_Shells</li>
 		</inspectorTabs>
 		<placeWorkers>
-			<li>PlaceWorker_TurretTop</li>
 			<li>PlaceWorker_ShowTurretRadius</li>
-			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
 		</placeWorkers>
 		<researchPrerequisites>
 			<li>Greatbow</li>
 		</researchPrerequisites>
 	</ThingDef>
-	<ThingDef ParentName="BaseBullet">
-		<defName>Projectile_Catapult_Single</defName>
-		<label>catapult projectile single</label>
+	
+	<ThingDef Name="Projectile_Catapult" ParentName="BaseBullet">
+		<defName>Projectile_Catapult</defName>
+		<label>catapult projectile</label>
 		<graphicData>
 			<texPath>Things/Projectile/Stone</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
+	</ThingDef>
+	
+	<ThingDef ParentName="Projectile_Catapult">
+		<defName>Projectile_Catapult_Single</defName>
+		<label>catapult projectile single</label>
 		<projectile>
 			<damageDef>Stone</damageDef>
+			<speed>50</speed>
 			<damageAmountBase>75</damageAmountBase>
 			<explosionRadius>2</explosionRadius>
 			<armorPenetrationBase>0.5</armorPenetrationBase>
 			<stoppingPower>2.5</stoppingPower>
-			<speed>50</speed>
 		</projectile>
 	</ThingDef>
-	<ThingDef ParentName="BaseBullet">
+	<ThingDef ParentName="Projectile_Catapult">
 		<defName>Projectile_Catapult_Multi</defName>
 		<label>catapult projectile multi</label>
-		<graphicData>
-			<texPath>Things/Projectile/Stone</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
 			<damageDef>Stone</damageDef>
+			<speed>50</speed>
 			<damageAmountBase>15</damageAmountBase>
 			<explosionRadius>0.5</explosionRadius>
 			<armorPenetrationBase>0.5</armorPenetrationBase>
 			<stoppingPower>2.5</stoppingPower>
-			<speed>50</speed>
 		</projectile>
 	</ThingDef>
-	<ThingDef ParentName="BaseWeaponTurret">
-		<defName>Catapult_Single</defName>
-		<label>Catapult-Single</label>
-		<description>A powerful bow made to be mounted on a ballista.</description>
+	<ThingDef Name="Catapult_Weapon" ParentName="BaseWeaponTurret" Abstract="True">
+		<defName>Catapult_Weapon</defName>
+		<label>Catapult Weapon</label>
+		<description>A catapult, when mounted on the base, it creates a deadly weapon.</description>
 		<graphicData>
 			<texPath>Things/Building/Catapult/CatapultTop</texPath>
 		</graphicData>
-		<comps>
-			<li Class="CompProperties_ChangeableProjectile"/>
-		</comps>
-		<building>
-      <fixedStorageSettings>
-        <filter>
-          <categories>
-            <li>StoneChunks</li>
-          </categories>	  
-        </filter>
-      </fixedStorageSettings>
-      <defaultStorageSettings>
-        <filter>
-          <categories>
-            <li>StoneChunks</li>		
-          </categories>
-        </filter>
-      </defaultStorageSettings>
-    </building>
 		<statBases>
-			<AccuracyTouch>0.7</AccuracyTouch>
-			<AccuracyShort>0.8</AccuracyShort>
-			<AccuracyMedium>0.9</AccuracyMedium>
-			<AccuracyLong>0.95</AccuracyLong>
-			<DeteriorationRate>0</DeteriorationRate>
 			<Mass>5</Mass>
+			<DeteriorationRate>0</DeteriorationRate>
 			<Flammability>0</Flammability>
 		</statBases>
-		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
-				<defaultProjectile>Projectile_Catapult_Single</defaultProjectile>
-				<range>45.9</range>
-				<forcedMissRadius>5</forcedMissRadius>
-				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
-				<burstShotCount>1</burstShotCount>
-				<soundCast>Catapult_Release</soundCast>
-			</li>
-		</verbs>
-	</ThingDef>
-	<ThingDef ParentName="BaseWeaponTurret">
-		<defName>Catapult_Multi</defName>
-		<label>Catapult-Multi</label>
-		<description>A powerful bow made to be mounted on a ballista.</description>
-		<graphicData>
-			<texPath>Things/Building/Catapult/CatapultTop</texPath>
-		</graphicData>
 		<comps>
 			<li Class="CompProperties_ChangeableProjectile"/>
 		</comps>
@@ -164,14 +104,37 @@
 				</filter>
 			</defaultStorageSettings>
 		</building>
+	</ThingDef>
+	
+	<ThingDef ParentName="Catapult_Weapon">
+		<defName>Catapult_Single</defName>
+		<label>Catapult Single</label>
+		<statBases>
+			<AccuracyTouch>0.7</AccuracyTouch>
+			<AccuracyShort>0.8</AccuracyShort>
+			<AccuracyMedium>0.9</AccuracyMedium>
+			<AccuracyLong>0.95</AccuracyLong>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>Projectile_Catapult_Single</defaultProjectile>
+				<range>45.9</range>
+				<forcedMissRadius>5</forcedMissRadius>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Catapult_Release</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+	<ThingDef ParentName="Catapult_Weapon">
+		<defName>Catapult_Multi</defName>
+		<label>Catapult Multi</label>
 		<statBases>
 			<AccuracyTouch>0.7</AccuracyTouch>
 			<AccuracyShort>0.6</AccuracyShort>
 			<AccuracyMedium>0.5</AccuracyMedium>
 			<AccuracyLong>0.4</AccuracyLong>
-			<DeteriorationRate>0</DeteriorationRate>
-			<Mass>5</Mass>
-			<Flammability>0</Flammability>
 		</statBases>
 		<verbs>
 			<li>

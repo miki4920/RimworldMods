@@ -7,7 +7,7 @@
 		<graphicData>
 			<texPath>Things/Building/Ballista/BallistaBase</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(1,2)</drawSize>
 			<damageData>
 				<rect>(0.2,0.2,0.6,0.6)</rect>
 			</damageData>
@@ -17,18 +17,12 @@
 			</shadowData>
 		</graphicData>
 		<uiIconPath>Things/Building/Ballista/BallistaTop</uiIconPath>
-		<uiIconScale>0.90</uiIconScale>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<statBases>
 			<MaxHitPoints>180</MaxHitPoints>
-			<Flammability>1</Flammability>
 			<WorkToBuild>1800</WorkToBuild>
-			<Mass>8</Mass>
-			<Beauty>-20</Beauty>
 			<ShootingAccuracyTurret>0.98</ShootingAccuracyTurret>
 		</statBases>
-		<passability>PassThroughOnly</passability>
-		<pathCost>50</pathCost>
-		<fillPercent>0.4</fillPercent>
 		<costList>
 			<WoodLog>130</WoodLog>
 			<Steel>40</Steel>
@@ -61,16 +55,11 @@
 			</li>
 		</comps>
 		<building>
-			<combatPower>45</combatPower>
-			<!-- same as a scavenger -->
-			<ai_combatDangerous>true</ai_combatDangerous>
 			<turretGunDef>Ballista_Single</turretGunDef>
 			<turretBurstCooldownTime>8</turretBurstCooldownTime>
 		</building>
 		<placeWorkers>
-			<li>PlaceWorker_TurretTop</li>
 			<li>PlaceWorker_ShowTurretRadius</li>
-			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
 		</placeWorkers>
 		<researchPrerequisites>
 			<li>Greatbow</li>
@@ -85,7 +74,7 @@
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>Bolt</damageDef>
+			<damageDef>Stone</damageDef>
 			<damageAmountBase>50</damageAmountBase>
 			<explosionRadius>0.5</explosionRadius>
 			<armorPenetrationBase>0.5</armorPenetrationBase>
@@ -93,6 +82,7 @@
 			<speed>75</speed>
 		</projectile>
 	</ThingDef>
+	
 	<ThingDef ParentName="BaseProjectileNeolithic">
 		<defName>Projectile_Ballista_Multi</defName>
 		<label>ballista projectile multi</label>
@@ -108,11 +98,13 @@
 			<speed>50</speed>
 		</projectile>
 	</ThingDef>
+	
 	<ThingDef ParentName="BaseWeaponTurret">
 		<defName>Ballista_Single</defName>
-		<label>Ballista-Single</label>
+		<label>Ballista Single</label>
 		<description>A powerful bow made to be mounted on a ballista.</description>
 		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
 			<texPath>Things/Building/Ballista/BallistaTop</texPath>
 		</graphicData>
 		<statBases>
@@ -127,11 +119,11 @@
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<defaultProjectile>Projectile_Ballista_Single</defaultProjectile>
 				<minRange>11.9</minRange>
 				<range>45.9</range>
 				<forcedMissRadius>1</forcedMissRadius>
-				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>1</burstShotCount>
 				<soundCast>Ballista_Release</soundCast>
 				<consumeFuelPerShot>5</consumeFuelPerShot>
@@ -140,9 +132,10 @@
 	</ThingDef>
 	<ThingDef ParentName="BaseWeaponTurret">
 		<defName>Ballista_Multi</defName>
-		<label>Ballista-Multi</label>
+		<label>Ballista Multi</label>
 		<description>A powerful bow made to be mounted on a ballista.</description>
 		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
 			<texPath>Things/Building/Ballista/BallistaTop</texPath>
 		</graphicData>
 		<statBases>
@@ -157,9 +150,9 @@
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
+				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<defaultProjectile>Projectile_Ballista_Multi</defaultProjectile>
 				<range>28.9</range>
-				<ticksBetweenBurstShots>0</ticksBetweenBurstShots>
 				<burstShotCount>10</burstShotCount>
 				<soundCast>Ballista_Release</soundCast>
 				<consumeFuelPerShot>1</consumeFuelPerShot>

@@ -79,7 +79,7 @@ namespace Rimdungeon.Turrets
         {
             foreach (Gizmo gizmo in base.GetGizmos())
             {
-                if(!secondaryGun && !gizmo.ToString().Contains("Extract"))
+                if(!(TurretDef.secondaryGun is null) && !gizmo.ToString().Contains("Extract"))
                 {
                     yield return gizmo;
                 }

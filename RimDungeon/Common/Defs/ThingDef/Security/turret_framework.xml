@@ -1,23 +1,39 @@
 <Defs>
 	<ThingDef Name="BaseDungeonTurret" Abstract="True">
 		<category>Building</category>
-		<designationCategory>Security</designationCategory>
 		<thingClass>RimDungeon.Turrets.Dungeon_Turret</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
-		<tickerType>Normal</tickerType>
-		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<designationCategory>Security</designationCategory>
+		<soundImpactDefault>BulletImpact_Wood</soundImpactDefault>
 		<selectable>true</selectable>
+		<tickerType>Normal</tickerType>
+		<hasInteractionCell>True</hasInteractionCell>
+		<hasTooltip>true</hasTooltip>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
-		<hasTooltip>true</hasTooltip>
+		<uiIconScale>0.90</uiIconScale>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+			<shadowData>
+				<volume>(0.27,0.25,0.27)</volume>
+				<offset>(0,0,0)</offset>
+			</shadowData>
+		</graphicData>
 		<statBases>
 			<SellPriceFactor>0.70</SellPriceFactor>
+			<Beauty>-20</Beauty>
+			<Flammability>1</Flammability>
 		</statBases>
+		<building>
+			<ai_combatDangerous>true</ai_combatDangerous>
+		</building>
 		<comps>
 			<li Class="CompProperties_Forbiddable"/>
 			<li Class="CompProperties_Mannable">
@@ -26,47 +42,23 @@
 		</comps>
 		<stealable>false</stealable>
 		<rotatable>true</rotatable>
+		<placeWorkers>
+			<li>PlaceWorker_TurretTop</li>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
 	</ThingDef>
-	
-	<ThingDef Name="BaseDungeonArtillery" ParentName="BuildingBase" Abstract="True">
-		<thingClass>RimDungeon.Turrets.Dungeon_Turret</thingClass>
-		<altitudeLayer>Building</altitudeLayer>
-		<stealable>false</stealable>
-		<size>(2,2)</size>
-		<passability>PassThroughOnly</passability>
-		<pathCost>50</pathCost>
-		<fillPercent>0.4</fillPercent>
-		<tickerType>Normal</tickerType>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Security</designationCategory>
-		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	<ThingDef Name="BaseDungeonArtillery" ParentName="BaseDungeonTurret" Abstract="True">
 		<inspectorTabs>
 			<li>ITab_Shells</li>
 		</inspectorTabs>
-		<comps>
-			<li Class="CompProperties_Forbiddable"/>
-			<li Class="CompProperties_Mannable">
-				<manWorkType>Violent</manWorkType>
-			</li>
-		</comps>
-		<statBases>
-			<MaxHitPoints>180</MaxHitPoints>
-			<Flammability>0.7</Flammability>
-			<WorkToBuild>2000</WorkToBuild>
-			<Mass>30</Mass>
-			<Beauty>-20</Beauty>
-		</statBases>
 		<building>
-			<turretBurstWarmupTime>4.0</turretBurstWarmupTime>
-			<turretBurstCooldownTime>28.0</turretBurstCooldownTime>
+			<combatPower>45</combatPower>
 			<buildingTags>
 				<li>Artillery</li>
 			</buildingTags>
 		</building>
 		<placeWorkers>
 			<li>PlaceWorker_NotUnderRoof</li>
-			<li>PlaceWorker_TurretTop</li>
-			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
 		</placeWorkers>
 		<uiIconScale>1.1</uiIconScale>
 	</ThingDef>

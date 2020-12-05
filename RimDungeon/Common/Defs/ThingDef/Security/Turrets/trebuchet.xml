@@ -5,17 +5,8 @@
 		<description>A trebuchet is a battle machine used in the middle ages to throw heavy payloads at enemies. Though costly and difficult to build, a direct hit by a trebuchet is devastating.</description>
 		<size>(3,3)</size>
 		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
 			<texPath>Things/Building/Trebuchet/TrebuchetBase</texPath>
-			<drawSize>(3,3)</drawSize>
-			<damageData>
-				<rect>(0.38,0.2,0.56375,0.8)</rect>
-				<cornerTL>Damage/Corner</cornerTL>
-			</damageData>
-			<shadowData>
-				<offset>(-0.13,-0.87,-0.1)</offset>
-				<volume>(0.5,0.4,1.05)</volume>
-			</shadowData>
+			<drawSize>(2.5,2.5)</drawSize>
 		</graphicData>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<stuffCategories>
@@ -23,7 +14,6 @@
 		</stuffCategories>
 		<costStuffCount>150</costStuffCount>
 		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<costList>
 			<WoodLog>300</WoodLog>
@@ -33,7 +23,7 @@
 			</li>
 		</modExtensions>
 		<building>
-			<turretGunDef>Trebuchet_Gun</turretGunDef>
+			<turretGunDef>Trebuchet_Weapon</turretGunDef>
 			<turretBurstWarmupTime>0</turretBurstWarmupTime>
 			<turretBurstCooldownTime>28.0</turretBurstCooldownTime>
 			<buildingTags>
@@ -42,13 +32,11 @@
 			</buildingTags>
 		</building>
 		<uiIconPath>Things/Building/Trebuchet/TrebuchetTop</uiIconPath>
-		<uiIconScale>0.9</uiIconScale>
 	</ThingDef>
-	
 	<ThingDef ParentName="BaseArtilleryWeapon">
-		<defName>Trebuchet_Gun</defName>
+		<defName>Trebuchet_Weapon</defName>
 		<label>trebuchet</label>
-		<description>Mortar launcher. Lobs bombs over walls. Very inaccurate but long-ranged.</description>
+		<description>A Trebuchet. Lobs 90 kg rocks over 300 m distance.</description>
 		<graphicData>
 			<texPath>Things/Building/Trebuchet/TrebuchetTop</texPath>
 		</graphicData>
@@ -92,13 +80,13 @@
 			</defaultStorageSettings>
 		</building>
 	</ThingDef>
-	
 	<ThingDef ParentName="BaseBullet">
 		<defName>Trebuchet_Projectile_Single</defName>
 		<label>trebuchet projectile single</label>
 		<graphicData>
 			<texPath>Things/Projectile/Stone</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>

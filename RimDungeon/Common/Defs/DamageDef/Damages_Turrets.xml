@@ -1,38 +1,11 @@
 <Defs>
-<DamageDef ParentName="Bomb">
-    <defName>Bolt</defName>
-    <label>bolt</label>
-    <workerClass>DamageWorker_AddInjury</workerClass>
-    <externalViolence>true</externalViolence>
-    <isExplosive>true</isExplosive>
-    <deathMessage>{0} has died to a bolt.</deathMessage>
-    <hediff>Shredded</hediff>
-    <hediffSolid>Crack</hediffSolid>
-    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
-    <impactSoundType>Blunt</impactSoundType>
-    <armorCategory>Sharp</armorCategory>
-    <minDamageToFragment>15</minDamageToFragment>
-    <defaultDamage>50</defaultDamage>
-    <defaultStoppingPower>2.5</defaultStoppingPower>
-    <defaultArmorPenetration>0.10</defaultArmorPenetration>
-    <buildingDamageFactor>1</buildingDamageFactor>
-    <plantDamageFactor>1</plantDamageFactor>
-    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
-    <explosionHeatEnergyPerCell>5</explosionHeatEnergyPerCell>
-    <explosionCellMote>Mote_BlastDry</explosionCellMote>
-    <explosionColorCenter>(0.6, 0.46, 0.32)</explosionColorCenter>
-    <explosionColorEdge>(0.61, 0.48, 0.35)</explosionColorEdge>
-    <soundExplosion>Ballista_Bolt</soundExplosion>
-    <combatLogRules>Damage_Bomb</combatLogRules>
-  </DamageDef>
-  
   <DamageDef ParentName="Bomb">
     <defName>Stone</defName>
     <label>stone</label>
     <workerClass>DamageWorker_AddInjury</workerClass>
     <externalViolence>true</externalViolence>
     <isExplosive>true</isExplosive>
-    <deathMessage>{0} has died to a bolt.</deathMessage>
+    <deathMessage>{0} has been shredded by stone projectile.</deathMessage>
     <hediff>Shredded</hediff>
     <hediffSolid>Crack</hediffSolid>
     <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
@@ -42,7 +15,7 @@
     <defaultDamage>50</defaultDamage>
     <defaultStoppingPower>2.5</defaultStoppingPower>
     <defaultArmorPenetration>0.10</defaultArmorPenetration>
-    <buildingDamageFactor>1</buildingDamageFactor>
+    <buildingDamageFactor>2</buildingDamageFactor>
     <plantDamageFactor>1</plantDamageFactor>
     <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
     <explosionHeatEnergyPerCell>5</explosionHeatEnergyPerCell>
@@ -52,7 +25,6 @@
     <soundExplosion>Catapult_Bolt</soundExplosion>
     <combatLogRules>Damage_Bomb</combatLogRules>
   </DamageDef>
-  
  </Defs>
  
  
