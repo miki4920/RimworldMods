@@ -1,5 +1,5 @@
 <Defs>
-<DamageDef Name="Bolt">
+<DamageDef ParentName="Bomb">
     <defName>Bolt</defName>
     <label>bolt</label>
     <workerClass>DamageWorker_AddInjury</workerClass>
@@ -26,8 +26,8 @@
     <combatLogRules>Damage_Bomb</combatLogRules>
   </DamageDef>
   
-  <DamageDef Name="Catapult_Stone">
-    <defName>Catapult_Stone</defName>
+  <DamageDef ParentName="Bomb">
+    <defName>Stone</defName>
     <label>stone</label>
     <workerClass>DamageWorker_AddInjury</workerClass>
     <externalViolence>true</externalViolence>
@@ -52,6 +52,7 @@
     <soundExplosion>Catapult_Bolt</soundExplosion>
     <combatLogRules>Damage_Bomb</combatLogRules>
   </DamageDef>
+  
  </Defs>
  
  

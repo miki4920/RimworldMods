@@ -227,7 +227,7 @@ namespace Rimdungeon.Traps
 					hotKey = KeyBindingDefOf.Misc4,
 					icon = TexCommand.RearmTrap,
 					action = AddRearmDesignation
-			};
+				};
 			}
 			yield break;
 		}

@@ -73,13 +73,13 @@ namespace Rimdungeon.Turrets
                     changedShell = false;
                 }
             }
-            
         }
+
         public override IEnumerable<Gizmo> GetGizmos()
         {
             foreach (Gizmo gizmo in base.GetGizmos())
             {
-                if(!gizmo.ToString().Contains("Extract"))
+                if(!secondaryGun && !gizmo.ToString().Contains("Extract"))
                 {
                     yield return gizmo;
                 }
@@ -113,6 +113,7 @@ namespace Rimdungeon.Turrets
                     },
                 };
             }
+            yield break;
             yield break;
 
         }
