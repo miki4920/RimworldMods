@@ -65,6 +65,7 @@
 			<li>Greatbow</li>
 		</researchPrerequisites>
 	</ThingDef>
+	
 	<ThingDef ParentName="BaseBullet">
 		<defName>Projectile_Ballista_Single</defName>
 		<label>ballista projectile single</label>
@@ -83,13 +84,16 @@
 		</projectile>
 	</ThingDef>
 	
-	<ThingDef ParentName="BaseProjectileNeolithic">
+	<ThingDef ParentName="BaseBullet">
 		<defName>Projectile_Ballista_Multi</defName>
 		<label>ballista projectile multi</label>
 		<graphicData>
 			<texPath>Things/Projectile/Pilum</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<thingCategories>
+			<li>WeaponsRanged</li>
+		</thingCategories>
 		<projectile>
 			<damageDef>ArrowHighVelocity</damageDef>
 			<damageAmountBase>10</damageAmountBase>
@@ -99,22 +103,29 @@
 		</projectile>
 	</ThingDef>
 	
-	<ThingDef ParentName="BaseWeaponTurret">
-		<defName>Ballista_Single</defName>
-		<label>Ballista Single</label>
+	<ThingDef Name="BallistaWeapon" ParentName="BaseWeaponTurret" Abstract="True">
+		<defName>Ballista_Weapon</defName>
+		<label>Ballista Weapon</label>
 		<description>A powerful bow made to be mounted on a ballista.</description>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 			<texPath>Things/Building/Ballista/BallistaTop</texPath>
 		</graphicData>
 		<statBases>
-			<AccuracyTouch>0.7</AccuracyTouch>
-			<AccuracyShort>0.8</AccuracyShort>
-			<AccuracyMedium>0.9</AccuracyMedium>
-			<AccuracyLong>0.95</AccuracyLong>
 			<DeteriorationRate>0</DeteriorationRate>
 			<Mass>5</Mass>
 			<Flammability>0</Flammability>
+		</statBases>
+	</ThingDef>
+	
+	<ThingDef ParentName="BallistaWeapon">
+		<defName>Ballista_Single</defName>
+		<label>Ballista Single</label>
+		<statBases>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.86</AccuracyShort>
+			<AccuracyMedium>0.86</AccuracyMedium>
+			<AccuracyLong>0.86</AccuracyLong>
 		</statBases>
 		<verbs>
 			<li>
@@ -130,22 +141,14 @@
 			</li>
 		</verbs>
 	</ThingDef>
-	<ThingDef ParentName="BaseWeaponTurret">
+	<ThingDef ParentName="BallistaWeapon">
 		<defName>Ballista_Multi</defName>
 		<label>Ballista Multi</label>
-		<description>A powerful bow made to be mounted on a ballista.</description>
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-			<texPath>Things/Building/Ballista/BallistaTop</texPath>
-		</graphicData>
 		<statBases>
-			<AccuracyTouch>0.7</AccuracyTouch>
-			<AccuracyShort>0.6</AccuracyShort>
-			<AccuracyMedium>0.5</AccuracyMedium>
-			<AccuracyLong>0.4</AccuracyLong>
-			<DeteriorationRate>0</DeteriorationRate>
-			<Mass>5</Mass>
-			<Flammability>0</Flammability>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.42</AccuracyShort>
+			<AccuracyMedium>0.18</AccuracyMedium>
+			<AccuracyLong>0.06</AccuracyLong>
 		</statBases>
 		<verbs>
 			<li>

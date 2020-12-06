@@ -6,6 +6,7 @@
 		<size>(2,2)</size>
 		<graphicData>
 			<texPath>Things/Building/Catapult/CatapultBase</texPath>
+			<drawSize>(2,2)</drawSize>
 		</graphicData>
 		<uiIconPath>Things/Building/Catapult/CatapultTop</uiIconPath>
 		<statBases>
@@ -55,7 +56,7 @@
 		<projectile>
 			<damageDef>Stone</damageDef>
 			<speed>50</speed>
-			<damageAmountBase>75</damageAmountBase>
+			<damageAmountBase>100</damageAmountBase>
 			<explosionRadius>2</explosionRadius>
 			<armorPenetrationBase>0.5</armorPenetrationBase>
 			<stoppingPower>2.5</stoppingPower>
@@ -67,7 +68,7 @@
 		<projectile>
 			<damageDef>Stone</damageDef>
 			<speed>50</speed>
-			<damageAmountBase>15</damageAmountBase>
+			<damageAmountBase>20</damageAmountBase>
 			<explosionRadius>0.5</explosionRadius>
 			<armorPenetrationBase>0.5</armorPenetrationBase>
 			<stoppingPower>2.5</stoppingPower>
@@ -79,6 +80,7 @@
 		<description>A catapult, when mounted on the base, it creates a deadly weapon.</description>
 		<graphicData>
 			<texPath>Things/Building/Catapult/CatapultTop</texPath>
+			<drawSize>(1,1)</drawSize>
 		</graphicData>
 		<statBases>
 			<Mass>5</Mass>
@@ -110,10 +112,10 @@
 		<defName>Catapult_Single</defName>
 		<label>Catapult Single</label>
 		<statBases>
-			<AccuracyTouch>0.7</AccuracyTouch>
-			<AccuracyShort>0.8</AccuracyShort>
-			<AccuracyMedium>0.9</AccuracyMedium>
-			<AccuracyLong>0.95</AccuracyLong>
+			<AccuracyTouch>0.79</AccuracyTouch>
+			<AccuracyShort>0.42</AccuracyShort>
+			<AccuracyMedium>0.18</AccuracyMedium>
+			<AccuracyLong>0.06</AccuracyLong>
 		</statBases>
 		<verbs>
 			<li>
@@ -131,10 +133,10 @@
 		<defName>Catapult_Multi</defName>
 		<label>Catapult Multi</label>
 		<statBases>
-			<AccuracyTouch>0.7</AccuracyTouch>
-			<AccuracyShort>0.6</AccuracyShort>
-			<AccuracyMedium>0.5</AccuracyMedium>
-			<AccuracyLong>0.4</AccuracyLong>
+			<AccuracyTouch>0.79</AccuracyTouch>
+			<AccuracyShort>0.42</AccuracyShort>
+			<AccuracyMedium>0.18</AccuracyMedium>
+			<AccuracyLong>0.06</AccuracyLong>
 		</statBases>
 		<verbs>
 			<li>
