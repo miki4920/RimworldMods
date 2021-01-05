@@ -1,2 +1,2 @@
-# RimworldMods
- A repository used for various Rimworld Mods
+# RimDungeon_Darkness
+ A mod adding realistic darkness and ways to deal with it.
